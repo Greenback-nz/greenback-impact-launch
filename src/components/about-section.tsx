@@ -56,10 +56,12 @@ export const AboutSection = () => {
           <div className="order-1 md:order-2">
             <Card className="overflow-hidden">
               <CardContent className="p-0">
-                <div className="aspect-square bg-gradient-to-br from-forest/20 to-coral/20 flex items-center justify-center">
-                  <div className="w-48 h-48 bg-muted rounded-full flex items-center justify-center">
-                    <span className="text-muted-foreground text-sm">Professional Headshot</span>
-                  </div>
+                <div className="aspect-square bg-gradient-to-br from-emerald/10 to-sage/10 flex items-center justify-center">
+                  <img 
+                    src="/lovable-uploads/f631e360-095f-42e8-9d6f-2376ccde695a.png" 
+                    alt="Fliss Roberts - Professional headshot"
+                    className="w-full h-full object-cover rounded-lg"
+                  />
                 </div>
               </CardContent>
             </Card>
