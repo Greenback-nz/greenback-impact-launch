@@ -1,44 +1,57 @@
 import { Section } from "@/components/ui/section";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Leaf, Users, Bot, ShoppingCart, Coins, FileText } from "lucide-react";
+import { Leaf, Users, Bot, ShoppingCart, Coins, FileText } from "lucide-react";
+
+// Import project images
+import plantmeImage from "@/assets/plantme-project.jpg";
+import oanzImage from "@/assets/oanz-project.jpg";
+import roboticSurgeryImage from "@/assets/robotic-surgery-project.jpg";
+import organicCollectiveImage from "@/assets/organic-collective-project.jpg";
+import girlsClubDaoImage from "@/assets/girls-club-dao-project.jpg";
+import econarrativeImage from "@/assets/econarrative-project.jpg";
 
 const projects = [
   {
     title: "PlantMe.io",
     description: "Built and launched a peer-to-peer marketplace allowing users to record and measure success and climate impact of what they grow at home.",
     icon: Leaf,
-    gradient: "from-primary/10 to-accent/5"
+    gradient: "from-primary/10 to-accent/5",
+    image: plantmeImage
   },
   {
     title: "OANZ Ecosystem Services Strategy",
     description: "Led research, design and funding frameworks for organic sectoral body",
     icon: Users,
-    gradient: "from-forest/10 to-primary/5"
+    gradient: "from-forest/10 to-primary/5",
+    image: oanzImage
   },
   {
     title: "Robot Head & Neck Surgery",
     description: "Supported commercial strategy for NZ first robotic surgical startup",
     icon: Bot,
-    gradient: "from-coral/10 to-forest/5"
+    gradient: "from-coral/10 to-forest/5",
+    image: roboticSurgeryImage
   },
   {
     title: "The Organic Collective",
     description: "Developed MVP for B2B/B2C certified organic marketplace",
     icon: ShoppingCart,
-    gradient: "from-accent/10 to-coral/5"
+    gradient: "from-accent/10 to-coral/5",
+    image: organicCollectiveImage
   },
   {
     title: "Girls Club DAO",
     description: "Web3 co-op experimenting in next-gen funding models for female led startups",
     icon: Coins,
-    gradient: "from-primary/10 to-forest/5"
+    gradient: "from-primary/10 to-forest/5",
+    image: girlsClubDaoImage
   },
   {
     title: "EcoNarrative Kitset",
     description: "ESG Reporting & Storytelling tools to help businesses communicate value and impact",
     icon: FileText,
-    gradient: "from-forest/10 to-accent/5"
+    gradient: "from-forest/10 to-accent/5",
+    image: econarrativeImage
   }
 ];
 
@@ -60,6 +73,13 @@ export const ProjectsSection = () => {
           return (
             <Card key={index} className={`group border-border hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
               <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full" />
+              <div className="aspect-video overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
               <CardHeader className="relative">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
@@ -72,13 +92,6 @@ export const ProjectsSection = () => {
                 <CardDescription className="text-sm leading-relaxed text-muted-foreground">
                   {project.description}
                 </CardDescription>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground group-hover:shadow-md transition-all"
-                >
-                  Learn More <ExternalLink className="ml-2 h-3 w-3" />
-                </Button>
               </CardContent>
             </Card>
           );
