@@ -4,13 +4,13 @@ import { Leaf, Users, Bot, ShoppingCart, Coins, FileText } from "lucide-react";
 
 // Import project images
 import roboticSurgeryImage from "@/assets/robotic-surgery-project.jpg";
-import organicCollectiveImage from "@/assets/organic-collective-video.png";
 import econarrativeImage from "@/assets/econarrative-project.jpg";
 
 // Use uploaded images for specific projects
-const plantmeImage = "/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png";
-const oanzImage = "/lovable-uploads/f631e360-095f-42e8-9d6f-2376ccde695a.png";
-const girlsClubDaoImage = "/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png";
+const plantmeImage = "/lovable-uploads/53f3ab09-9fa7-469a-8ef3-34b69a54e489.png";
+const oanzImage = "/lovable-uploads/91f31926-eff7-4532-a697-2d74b0666d65.png";
+const girlsClubDaoImage = "/lovable-uploads/be624caf-0868-4ec8-a709-7a4d103344cc.png";
+const organicCollectiveImage = "https://img.youtube.com/vi/gN3ioOt_f0E/maxresdefault.jpg";
 
 const projects = [
   {
