@@ -18,14 +18,16 @@ const projects = [
     description: "Built and launched a peer-to-peer marketplace allowing users to record and measure success and climate impact of what they grow at home.",
     icon: Leaf,
     gradient: "from-primary/10 to-accent/5",
-    image: plantmeImage
+    image: plantmeImage,
+    url: "https://plantme.io/"
   },
   {
     title: "OANZ Ecosystem Services Strategy",
     description: "Led research, design and funding frameworks for organic sectoral body",
     icon: Users,
     gradient: "from-forest/10 to-primary/5",
-    image: oanzImage
+    image: oanzImage,
+    url: "https://www.oanz.org/"
   },
   {
     title: "Robot Head & Neck Surgery",
@@ -39,7 +41,8 @@ const projects = [
     description: "Developed MVP for B2B/B2C certified organic marketplace",
     icon: ShoppingCart,
     gradient: "from-accent/10 to-coral/5",
-    image: organicCollectiveImage
+    image: organicCollectiveImage,
+    url: "https://youtu.be/gN3ioOt_f0E"
   },
   {
     title: "Girls Club DAO",
@@ -72,30 +75,38 @@ export const ProjectsSection = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {projects.map((project, index) => {
           const IconComponent = project.icon;
+          
+          const CardWrapper = project.url ? 'a' : 'div';
+          const cardProps = project.url ? 
+            { href: project.url, target: "_blank", rel: "noopener noreferrer" } : 
+            {};
+          
           return (
-            <Card key={index} className={`group border-border hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br ${project.gradient} relative overflow-hidden`}>
-              <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full" />
-              <div className="aspect-video overflow-hidden">
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-              <CardHeader className="relative">
-                <div className="flex items-center gap-3 mb-2">
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors">{project.title}</CardTitle>
+            <CardWrapper key={index} {...cardProps}>
+              <Card className={`group border-border hover:shadow-xl transition-all duration-500 hover:-translate-y-2 bg-gradient-to-br ${project.gradient} relative overflow-hidden ${project.url ? 'cursor-pointer' : ''}`}>
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-transparent rounded-bl-full" />
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                 </div>
-              </CardHeader>
-              <CardContent className="space-y-4 relative">
-                <CardDescription className="text-sm leading-relaxed text-muted-foreground">
-                  {project.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+                <CardHeader className="relative">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <IconComponent className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg text-foreground group-hover:text-primary transition-colors">{project.title}</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4 relative">
+                  <CardDescription className="text-sm leading-relaxed text-muted-foreground">
+                    {project.description}
+                  </CardDescription>
+                </CardContent>
+              </Card>
+            </CardWrapper>
           );
         })}
       </div>
