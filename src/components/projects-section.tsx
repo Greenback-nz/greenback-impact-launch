@@ -3,12 +3,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Leaf, Users, Bot, ShoppingCart, Coins, FileText } from "lucide-react";
 
 // Import project images
-import plantmeImage from "@/assets/plantme-project.jpg";
-import oanzImage from "@/assets/oanz-project.jpg";
 import roboticSurgeryImage from "@/assets/robotic-surgery-project.jpg";
-import organicCollectiveImage from "@/assets/organic-collective-project.jpg";
-import girlsClubDaoImage from "@/assets/girls-club-dao-project.jpg";
+import organicCollectiveImage from "@/assets/organic-collective-video.png";
 import econarrativeImage from "@/assets/econarrative-project.jpg";
+
+// Use uploaded images for specific projects
+const plantmeImage = "/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png";
+const oanzImage = "/lovable-uploads/f631e360-095f-42e8-9d6f-2376ccde695a.png";
+const girlsClubDaoImage = "/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png";
 
 const projects = [
   {
