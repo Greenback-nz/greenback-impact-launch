@@ -25,11 +25,6 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      // For now, we'll use a mailto fallback until EmailJS is configured
-      const subject = `Contact Form: ${formData.organization || 'General Inquiry'}`;
-      const body = `Name: ${formData.name}\nEmail: ${formData.email}\nOrganization: ${formData.organization}\n\nMessage:\n${formData.message}`;
-      
-      // Create a temporary form for EmailJS (when configured)
       const templateParams = {
         from_name: formData.name,
         from_email: formData.email,
@@ -38,8 +33,12 @@ export const ContactSection = () => {
         to_email: 'info@greenback.solutions'
       };
 
-      // Fallback to mailto for now
-      window.open(`mailto:info@greenback.solutions?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      await emailjs.send(
+        'service_91uergm',
+        'template_ftzuv06',
+        templateParams,
+        'zaskn9roVmiB4SKmZ'
+      );
       
       toast({
         title: "Thanks for your message!",
