@@ -17,8 +17,11 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    
+    const subject = `Contact Form: ${formData.organization || 'General Inquiry'}`;
+    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.organization}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
+    
+    window.location.href = `mailto:info@greenback.solutions?subject=${encodeURIComponent(subject)}&body=${body}`;
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -102,7 +105,7 @@ export const ContactSection = () => {
                   type="button" 
                   variant="outline" 
                   className="border-forest text-forest hover:bg-forest hover:text-forest-foreground"
-                  onClick={() => window.open('https://www.humiint.com/u/6879b526-c863-491a-aeca-98d7e2cc1f1a', '_blank')}
+                  onClick={() => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=info@greenback.solutions', '_blank')}
                 >
                   <Calendar className="mr-2 h-4 w-4" />
                   Book a Call
