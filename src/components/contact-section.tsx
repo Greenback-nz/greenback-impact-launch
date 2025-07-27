@@ -7,9 +7,12 @@ import { Label } from "@/components/ui/label";
 import { Calendar } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from '@emailjs/browser';
 
 export const ContactSection = () => {
   const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,18 +20,49 @@ export const ContactSection = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    const subject = `Contact Form: ${formData.organization || 'General Inquiry'}`;
-    const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.organization}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
-    
-    window.location.href = `mailto:info@greenback.solutions?subject=${encodeURIComponent(subject)}&body=${body}`;
-    
-    toast({
-      title: "Thanks for your message!",
-      description: "I'll be in touch soon.",
-    });
+    setIsSubmitting(true);
+
+    try {
+      // For now, we'll use a mailto fallback until EmailJS is configured
+      const subject = `Contact Form: ${formData.organization || 'General Inquiry'}`;
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\nOrganization: ${formData.organization}\n\nMessage:\n${formData.message}`;
+      
+      // Create a temporary form for EmailJS (when configured)
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        organization: formData.organization,
+        message: formData.message,
+        to_email: 'info@greenback.solutions'
+      };
+
+      // Fallback to mailto for now
+      window.open(`mailto:info@greenback.solutions?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`);
+      
+      toast({
+        title: "Thanks for your message!",
+        description: "I'll be in touch soon.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        organization: '',
+        message: ''
+      });
+
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again or email directly at info@greenback.solutions",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -104,9 +138,10 @@ export const ContactSection = () => {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button 
                   type="submit" 
+                  disabled={isSubmitting}
                   className="bg-coral hover:bg-coral/90 text-coral-foreground flex-1"
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
                 <Button 
                   type="button" 
