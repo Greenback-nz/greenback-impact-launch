@@ -6,8 +6,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Calendar } from "lucide-react";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 export const ContactSection = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,6 +24,11 @@ export const ContactSection = () => {
     const body = `Name: ${formData.name}%0D%0AEmail: ${formData.email}%0D%0AOrganization: ${formData.organization}%0D%0A%0D%0AMessage:%0D%0A${formData.message}`;
     
     window.location.href = `mailto:info@greenback.solutions?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    toast({
+      title: "Thanks for your message!",
+      description: "I'll be in touch soon.",
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
