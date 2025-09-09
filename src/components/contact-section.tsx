@@ -21,32 +21,6 @@ export const ContactSection = () => {
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              asChild
-              className="bg-coral hover:bg-coral/90 text-coral-foreground"
-            >
-              <a href="mailto:hello.greenback@gmail.com">
-                <Mail className="mr-2 h-4 w-4" />
-                Send Email
-              </a>
-            </Button>
-            
-            <Button 
-              asChild
-              variant="outline" 
-              className="border-forest text-forest hover:bg-forest hover:text-forest-foreground"
-            >
-              <a 
-                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=hello.greenback@gmail.com" 
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Calendar className="mr-2 h-4 w-4" />
-                Book a Call
-              </a>
-            </Button>
-          </div>
           
           <div className="mt-8 p-6 bg-muted rounded-lg">
             <p className="text-sm text-muted-foreground">
