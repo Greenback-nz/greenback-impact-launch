@@ -30,7 +30,7 @@ export const ContactSection = () => {
         from_email: formData.email,
         organization: formData.organization,
         message: formData.message,
-        to_email: 'info@greenback.solutions'
+        to_email: 'hello.greenback@gmail.com'
       };
 
       await emailjs.send(
@@ -56,7 +56,7 @@ export const ContactSection = () => {
     } catch (error) {
       toast({
         title: "Error sending message",
-        description: "Please try again or email directly at info@greenback.solutions",
+        description: "Please try again or email directly at hello.greenback@gmail.com",
         variant: "destructive",
       });
     } finally {
@@ -146,7 +146,7 @@ export const ContactSection = () => {
                   type="button" 
                   variant="outline" 
                   className="border-forest text-forest hover:bg-forest hover:text-forest-foreground"
-                  onClick={() => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=info@greenback.solutions', '_blank')}
+                  onClick={() => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=hello.greenback@gmail.com', '_blank')}
                 >
                   <Calendar className="mr-2 h-4 w-4" />
                   Book a Call

@@ -16,11 +16,11 @@ export const Footer = () => {
           
           <div className="flex items-center space-x-6">
             <a 
-              href="mailto:info@greenback.solutions" 
+              href="mailto:hello.greenback@gmail.com" 
               className="flex items-center hover:text-coral transition-colors"
             >
               <Mail className="h-4 w-4 mr-2" />
-              info@greenback.solutions
+              hello.greenback@gmail.com
             </a>
             <a 
               href="https://www.linkedin.com/in/felicityroberts/" 
