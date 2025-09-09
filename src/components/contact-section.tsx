@@ -1,77 +1,8 @@
 import { Section } from "@/components/ui/section";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Calendar } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import emailjs from '@emailjs/browser';
+import { Mail, Calendar } from "lucide-react";
 
 export const ContactSection = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    organization: '',
-    message: ''
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        organization: formData.organization,
-        message: formData.message,
-        to_email: 'hello.greenback@gmail.com'
-      };
-
-      await emailjs.send(
-        'service_91uergm',
-        'template_ftzuv06',
-        templateParams,
-        'zaskn9roVmiB4SKmZ'
-      );
-      
-      toast({
-        title: "Thanks for your message!",
-        description: "I'll be in touch soon.",
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        organization: '',
-        message: ''
-      });
-
-    } catch (error) {
-      toast({
-        title: "Error sending message",
-        description: "Please try again or email directly at hello.greenback@gmail.com",
-        variant: "destructive",
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
   return (
     <Section id="contact" className="bg-background">
       <div className="max-w-2xl mx-auto text-center">
@@ -82,79 +13,47 @@ export const ContactSection = () => {
           Ready to create impact? Get in touch to discuss your project.
         </p>
         
-        <Card className="border-border">
-          <CardHeader>
-            <CardTitle className="text-left">Contact Form</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="organization">Organization/Project</Label>
-                <Input
-                  id="organization"
-                  name="organization"
-                  value={formData.organization}
-                  onChange={handleInputChange}
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="bg-coral hover:bg-coral/90 text-coral-foreground flex-1"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
-                <Button 
-                  type="button" 
-                  variant="outline" 
-                  className="border-forest text-forest hover:bg-forest hover:text-forest-foreground"
-                  onClick={() => window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=hello.greenback@gmail.com', '_blank')}
-                >
-                  <Calendar className="mr-2 h-4 w-4" />
-                  Book a Call
-                </Button>
-              </div>
-            </form>
-          </CardContent>
-        </Card>
+        <div className="space-y-6">
+          <div className="text-center">
+            <h3 className="text-xl font-semibold text-foreground mb-4">Contact Me</h3>
+            <p className="text-muted-foreground mb-6">
+              Send me an email or book a call to discuss your project needs.
+            </p>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button 
+              asChild
+              className="bg-coral hover:bg-coral/90 text-coral-foreground"
+            >
+              <a href="mailto:hello.greenback@gmail.com">
+                <Mail className="mr-2 h-4 w-4" />
+                Send Email
+              </a>
+            </Button>
+            
+            <Button 
+              asChild
+              variant="outline" 
+              className="border-forest text-forest hover:bg-forest hover:text-forest-foreground"
+            >
+              <a 
+                href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Meeting%20with%20Greenback%20Solutions&details=Let%27s%20discuss%20your%20project&add=hello.greenback@gmail.com" 
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Calendar className="mr-2 h-4 w-4" />
+                Book a Call
+              </a>
+            </Button>
+          </div>
+          
+          <div className="mt-8 p-6 bg-muted rounded-lg">
+            <p className="text-sm text-muted-foreground">
+              <strong>Email:</strong> hello.greenback@gmail.com
+            </p>
+          </div>
+        </div>
       </div>
     </Section>
   );
