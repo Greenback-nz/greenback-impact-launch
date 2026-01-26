@@ -19,7 +19,7 @@ export const Footer = () => {
               <img 
                 src="/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png" 
                 alt="Greenback Logo" 
-                className="h-10 w-10"
+                className="h-10 w-10 bg-white rounded-md p-0.5"
               />
               <span className="text-xl font-semibold">Greenback</span>
             </div>

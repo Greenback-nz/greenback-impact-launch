@@ -26,7 +26,7 @@ export const Navigation = () => {
             <img 
               src="/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png" 
               alt="Greenback Logo" 
-              className="h-8 w-8 md:h-10 md:w-10"
+              className="h-8 w-8 md:h-10 md:w-10 bg-white rounded-md p-0.5"
             />
             <span className="text-xl md:text-2xl font-semibold text-foreground">Greenback</span>
           </Link>
