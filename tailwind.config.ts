@@ -52,9 +52,9 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				coral: {
-					DEFAULT: 'hsl(var(--coral))',
-					foreground: 'hsl(var(--coral-foreground))'
+				ochre: {
+					DEFAULT: 'hsl(var(--ochre))',
+					foreground: 'hsl(var(--ochre-foreground))'
 				},
 				forest: {
 					DEFAULT: 'hsl(var(--forest))',

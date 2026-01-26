@@ -2,107 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 158 64% 20%;
+    /* Warm white background */
+    --background: 50 33% 97%;
+    /* Deep forest green foreground */
+    --foreground: 153 44% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 158 64% 20%;
+    --card: 50 33% 99%;
+    --card-foreground: 153 44% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 158 64% 20%;
+    --popover: 50 33% 99%;
+    --popover-foreground: 153 44% 15%;
 
-    --primary: 158 64% 42%;
-    --primary-foreground: 0 0% 99%;
+    /* Deep forest green primary */
+    --primary: 153 44% 15%;
+    --primary-foreground: 50 33% 97%;
 
-    --secondary: 158 30% 95%;
-    --secondary-foreground: 158 64% 20%;
+    --secondary: 153 20% 92%;
+    --secondary-foreground: 153 44% 15%;
 
-    --muted: 158 15% 93%;
-    --muted-foreground: 158 25% 55%;
+    --muted: 50 20% 93%;
+    --muted-foreground: 153 20% 40%;
 
-    --accent: 158 64% 42%;
-    --accent-foreground: 0 0% 99%;
+    /* Ochre/gold accent */
+    --accent: 30 52% 64%;
+    --accent-foreground: 153 44% 10%;
 
-    --coral: 18 85% 65%;
-    --coral-foreground: 0 0% 100%;
+    /* Ochre for CTAs */
+    --ochre: 30 52% 64%;
+    --ochre-foreground: 50 33% 97%;
 
-    --forest: 158 64% 42%;
-    --forest-foreground: 0 0% 99%;
+    /* Deep forest green */
+    --forest: 153 44% 15%;
+    --forest-foreground: 50 33% 97%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 158 20% 88%;
-    --input: 158 20% 88%;
-    --ring: 158 64% 42%;
+    --border: 153 15% 85%;
+    --input: 153 15% 85%;
+    --ring: 153 44% 15%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 50 33% 98%;
+    --sidebar-foreground: 153 44% 15%;
+    --sidebar-primary: 153 44% 15%;
+    --sidebar-primary-foreground: 50 33% 97%;
+    --sidebar-accent: 30 52% 64%;
+    --sidebar-accent-foreground: 153 44% 10%;
+    --sidebar-border: 153 15% 85%;
+    --sidebar-ring: 153 44% 15%;
   }
 
   .dark {
-    --background: 158 64% 8%;
-    --foreground: 0 0% 95%;
+    --background: 153 44% 8%;
+    --foreground: 50 33% 95%;
 
-    --card: 158 35% 12%;
-    --card-foreground: 0 0% 95%;
+    --card: 153 35% 12%;
+    --card-foreground: 50 33% 95%;
 
-    --popover: 158 35% 12%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 153 35% 12%;
+    --popover-foreground: 50 33% 95%;
 
-    --primary: 158 64% 55%;
-    --primary-foreground: 158 64% 8%;
+    --primary: 153 44% 55%;
+    --primary-foreground: 153 44% 8%;
 
-    --secondary: 158 25% 18%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 153 25% 18%;
+    --secondary-foreground: 50 33% 95%;
 
-    --muted: 158 20% 15%;
-    --muted-foreground: 158 15% 65%;
+    --muted: 153 20% 15%;
+    --muted-foreground: 153 15% 65%;
 
-    --accent: 158 64% 55%;
-    --accent-foreground: 158 64% 8%;
+    --accent: 30 52% 70%;
+    --accent-foreground: 153 44% 8%;
 
-    --coral: 18 85% 70%;
-    --coral-foreground: 0 0% 100%;
+    --ochre: 30 52% 70%;
+    --ochre-foreground: 153 44% 8%;
 
-    --forest: 158 64% 55%;
-    --forest-foreground: 158 64% 8%;
+    --forest: 153 44% 55%;
+    --forest-foreground: 153 44% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 158 20% 25%;
-    --input: 158 20% 25%;
-    --ring: 158 64% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 153 20% 25%;
+    --input: 153 20% 25%;
+    --ring: 153 44% 55%;
+    --sidebar-background: 153 44% 10%;
+    --sidebar-foreground: 50 33% 95%;
+    --sidebar-primary: 153 44% 55%;
+    --sidebar-primary-foreground: 50 33% 97%;
+    --sidebar-accent: 30 52% 64%;
+    --sidebar-accent-foreground: 50 33% 95%;
+    --sidebar-border: 153 20% 25%;
+    --sidebar-ring: 153 44% 55%;
   }
 }
 
@@ -112,6 +113,13 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-bg {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(153 30% 95%) 50%, hsl(var(--background)) 100%);
   }
 }
