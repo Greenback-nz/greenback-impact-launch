@@ -1,20 +1,21 @@
+import { Layout } from "@/components/layout";
 import { HeroSection } from "@/components/hero-section";
+import { ProblemSection } from "@/components/problem-section";
 import { ServicesSection } from "@/components/services-section";
-import { ProjectsSection } from "@/components/projects-section";
+import { PortfolioSection } from "@/components/portfolio-section";
 import { AboutSection } from "@/components/about-section";
-import { ContactSection } from "@/components/contact-section";
-import { Footer } from "@/components/footer";
+import { CTASection } from "@/components/cta-section";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <Layout>
       <HeroSection />
+      <ProblemSection />
       <ServicesSection />
-      <ProjectsSection />
+      <PortfolioSection />
       <AboutSection />
-      <ContactSection />
-      <Footer />
-    </div>
+      <CTASection />
+    </Layout>
   );
 };
 
