@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&family=Instrument+Serif&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -122,4 +122,26 @@ All colors MUST be HSL.
   .gradient-bg {
     background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(153 30% 95%) 50%, hsl(var(--background)) 100%);
   }
+}
+
+/* Stealth / Investor landing page styles */
+.stealth-page {
+  background: #080c08;
+  color: #d4e8c2;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.stealth-page ::selection {
+  background: rgba(125, 180, 101, 0.25);
+  color: #e8f0e0;
+}
+
+.font-instrument {
+  font-family: 'Instrument Serif', serif;
+}
+
+.font-dm-mono {
+  font-family: 'DM Mono', monospace;
 }
