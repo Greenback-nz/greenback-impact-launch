@@ -94,10 +94,15 @@ function Nav() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
         <a
           href="#hero"
-          className="font-dm-mono text-sm tracking-wider no-underline"
-          style={{ color: "#7db465", letterSpacing: "0.12em" }}
+          className="flex items-center gap-2.5 no-underline"
         >
-          greenback.solutions
+          <img src="/logo.png" alt="Greenback" className="h-7 w-7" />
+          <span
+            className="font-dm-mono text-sm tracking-wider"
+            style={{ color: "#7db465", letterSpacing: "0.12em" }}
+          >
+            greenback.solutions
+          </span>
         </a>
 
         <div className="hidden md:flex items-center gap-8">

@@ -23,10 +23,10 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img 
-              src="/lovable-uploads/ce85fb2f-a254-43d3-9953-15556cb15361.png" 
-              alt="Greenback Logo" 
-              className="h-8 w-8 md:h-10 md:w-10 bg-white rounded-md p-0.5"
+            <img
+              src="/logo.png"
+              alt="Greenback Logo"
+              className="h-8 w-8 md:h-10 md:w-10"
             />
             <span className="text-xl md:text-2xl font-semibold text-foreground">Greenback</span>
           </Link>
