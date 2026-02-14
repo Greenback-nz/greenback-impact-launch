@@ -190,7 +190,7 @@ function Hero() {
           }}
         >
           We build the data infrastructure that connects agricultural
-          certification, environmental verification, and climate finance —
+          certification, environmental verification, and climate finance
           so the farmers doing the right thing get paid for it.
         </p>
 
@@ -234,9 +234,9 @@ function Thesis() {
       note: "Source: Climate Policy Initiative, 2024",
     },
     {
-      stat: "70%",
-      label: "Of ecosystem services lack credible verification infrastructure",
-      note: "Source: OECD, Paying for Biodiversity, 2024",
+      stat: "100%",
+      label: "Of NZ nature credit schemes require retiring productive land, not farming it better",
+      note: "Source: NZ ETS & biodiversity credit frameworks",
     },
     {
       stat: "~2,000",
@@ -266,10 +266,10 @@ function Thesis() {
             className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.15] mb-16 max-w-[800px]"
             style={{ color: "#e8f0e0" }}
           >
-            Farmers investing in regenerative practices go bankrupt.
-            Farmers degrading land receive subsidies.{" "}
+            In New Zealand, the only way to earn nature credits is to stop farming.
+            There is no system that rewards{" "}
             <span style={{ color: "#7db465", fontStyle: "italic" }}>
-              The economics are broken.
+              how you farm.
             </span>
           </h2>
         </FadeIn>
@@ -319,12 +319,7 @@ function Thesis() {
               className="text-base leading-relaxed"
               style={{ color: "rgba(212, 232, 194, 0.65)" }}
             >
-              The verification gap is the bottleneck. Agricultural certification
-              data exists in silos — organic certifiers, carbon registries,
-              biodiversity databases, and compliance frameworks all operate
-              independently. Without interoperable verification infrastructure,
-              farmers can't access the climate finance they're generating.
-              Greenback exists to close that gap.
+              Every nature credit scheme in New Zealand requires taking land out of production. Plant trees, retire pasture, fence off waterways. None of them measure or reward the farming practices that actually build soil health, sequester carbon, or protect biodiversity on working land. Certification data sits in disconnected systems. Verification is manual and expensive. The result: farmers doing the right thing get nothing for it. Greenback exists to fix that.
             </p>
           </div>
         </FadeIn>
@@ -348,7 +343,7 @@ function PlatformSection() {
     },
     {
       name: "Climate Finance Layer",
-      desc: "Infrastructure connecting verified environmental outcomes to ecosystem services payment mechanisms — carbon markets, biodiversity credits, sustainable finance taxonomies.",
+      desc: "Infrastructure connecting verified environmental outcomes to ecosystem services payment mechanisms: carbon markets, biodiversity credits, sustainable finance taxonomies.",
       status: "In Development",
     },
   ];
@@ -395,7 +390,7 @@ function PlatformSection() {
             style={{ color: "rgba(212, 232, 194, 0.6)" }}
           >
             We don't originate credits or own data. We build the infrastructure
-            that makes verified ecosystem services payments possible —
+            that makes verified ecosystem services payments possible,
             connecting farmers, certifiers, verifiers, and buyers through
             interoperable data systems.
           </p>
@@ -569,7 +564,7 @@ function Traction() {
               className="text-sm md:text-base leading-relaxed max-w-[600px] mb-6"
               style={{ color: "rgba(212, 232, 194, 0.6)" }}
             >
-              Our first product — real-time supplier verification, recipe
+              Our first product: real-time supplier verification, recipe
               compliance automation, and certification data aggregation across
               the ANZ Pacific region. Serving organic operators, certifiers,
               and food businesses.
@@ -667,7 +662,7 @@ function TeamSection() {
     {
       name: "Maggie Mabon",
       role: "CMO & Co-Founder",
-      bio: "3 years leading marketing at BioGro NZ, achieving 45% conversion rates — 3× the industry average. Deep understanding of how to reach and convert organic operators at scale.",
+      bio: "3 years leading marketing at BioGro NZ, achieving 45% conversion rates, 3x the industry average. Deep understanding of how to reach and convert organic operators at scale.",
     },
   ];
 
