@@ -127,7 +127,7 @@ const Contact = () => {
                     variant="outline"
                     className="w-full border-forest text-forest hover:bg-forest hover:text-forest-foreground"
                   >
-                    <a href="mailto:hello.greenback@gmail.com?subject=Discovery%20Call%20Request">
+                    <a href="mailto:hello@greenback.solutions?subject=Discovery%20Call%20Request">
                       Request a Call
                     </a>
                   </Button>
@@ -141,11 +141,11 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <a 
-                    href="mailto:hello.greenback@gmail.com"
+                    href="mailto:hello@greenback.solutions"
                     className="flex items-center gap-3 text-muted-foreground hover:text-ochre transition-colors"
                   >
                     <Mail className="h-5 w-5" />
-                    <span>hello.greenback@gmail.com</span>
+                    <span>hello@greenback.solutions</span>
                   </a>
                   <a 
                     href="https://www.linkedin.com/in/felicityroberts/"
