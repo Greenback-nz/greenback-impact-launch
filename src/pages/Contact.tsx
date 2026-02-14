@@ -120,15 +120,15 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Calendly booking widget coming soon. In the meantime, email me to schedule.
+                    A free 30-minute call to discuss your project and how we can help.
                   </p>
-                  <Button 
+                  <Button
                     asChild
                     variant="outline"
                     className="w-full border-forest text-forest hover:bg-forest hover:text-forest-foreground"
                   >
-                    <a href="mailto:hello@greenback.solutions?subject=Discovery%20Call%20Request">
-                      Request a Call
+                    <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">
+                      Book a 30-Minute Call
                     </a>
                   </Button>
                 </CardContent>

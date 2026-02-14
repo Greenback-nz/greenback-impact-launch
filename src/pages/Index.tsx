@@ -201,11 +201,9 @@ function Hero() {
           className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] mb-8"
           style={{ color: "#e8f0e0" }}
         >
-          Making regenerative farming
+          Farming that feeds
           <br />
-          <span style={{ color: "#7db465", fontStyle: "italic" }}>more profitable than</span>
-          <br />
-          destructive farming
+          <span style={{ color: "#7db465", fontStyle: "italic" }}>forever</span>
         </h1>
 
         <p
@@ -511,14 +509,14 @@ function PlatformSection() {
 // === TRACTION ===
 function Traction() {
   const metrics = [
-    { value: "200+", label: "Producers certified by founding team" },
+    { value: "850+", label: "Producers supported through certification" },
     { value: "18", label: "Sectors across organic certification" },
     { value: "1,000+", label: "NZ food businesses surveyed" },
     { value: "6", label: "Global certification databases integrated" },
   ];
 
   const partners = [
-    "Creative HQ Aurora Accelerator",
+    "Creative HQ Aurora Activate Cohort 2025",
     "AsureQuality",
     "OANZ",
     "BioGro NZ (alumni)",
@@ -683,7 +681,7 @@ function TeamSection() {
     {
       name: "Fliss Roberts",
       role: "CEO & Co-Founder",
-      bio: "3 years running organic certification operations at BioGro NZ. Certified 200+ producers across 18 sectors. 10 years operations management across healthcare and entrepreneurship. Full-stack developer.",
+      bio: "3 years running organic certification operations at BioGro NZ. Supported organic certification for over 850+ producers. 10 years operations management across healthcare and entrepreneurship. Full-stack developer.",
     },
     {
       name: "Maggie Mabon",
@@ -854,7 +852,7 @@ function ContactSection() {
                 Base
               </span>
               <span style={{ color: "rgba(212, 232, 194, 0.6)" }}>
-                Wellington, New Zealand
+                Bay of Plenty, Aotearoa New Zealand
               </span>
             </div>
 
@@ -906,7 +904,7 @@ function StealthFooter() {
         className="font-dm-mono text-[10px] mt-1"
         style={{ color: "rgba(212, 232, 194, 0.15)" }}
       >
-        Wellington, NZ · NZBN registered
+        Bay of Plenty, NZ · NZBN registered
       </p>
     </footer>
   );

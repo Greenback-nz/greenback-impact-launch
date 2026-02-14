@@ -50,7 +50,7 @@ export const Navigation = () => {
               asChild
               className="bg-ochre hover:bg-ochre/90 text-ochre-foreground"
             >
-              <Link to="/contact">Book a Call</Link>
+              <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
             </Button>
           </div>
 
@@ -86,9 +86,9 @@ export const Navigation = () => {
                 asChild
                 className="bg-ochre hover:bg-ochre/90 text-ochre-foreground w-fit"
               >
-                <Link to="/contact" onClick={() => setIsOpen(false)}>
+                <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                   Book a Call
-                </Link>
+                </a>
               </Button>
             </div>
           </div>

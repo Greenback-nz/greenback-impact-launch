@@ -49,10 +49,10 @@ export const HeroSection = () => {
               size="lg"
               className="bg-ochre hover:bg-ochre/90 text-ochre-foreground px-8 py-6 text-lg rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
-              <Link to="/contact">
+              <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">
                 Book a Discovery Call
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </a>
             </Button>
             <Button 
               asChild

@@ -157,10 +157,10 @@ const Services = () => {
             size="lg"
             className="bg-ochre hover:bg-ochre/90 text-ochre-foreground"
           >
-            <Link to="/contact">
+            <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">
               Book a Discovery Call
               <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
+            </a>
           </Button>
         </div>
       </Section>
