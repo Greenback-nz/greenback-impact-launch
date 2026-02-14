@@ -78,6 +78,10 @@ function Nav() {
     { id: "contact", label: "Contact" },
   ];
 
+  const serviceLinks = [
+    { href: "/services", label: "Services" },
+  ];
+
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
@@ -108,6 +112,23 @@ function Nav() {
               }}
             >
               {item.label}
+            </a>
+          ))}
+          <span
+            className="w-px h-4"
+            style={{ background: "rgba(125, 180, 101, 0.15)" }}
+          />
+          {serviceLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-dm-mono text-xs tracking-wider no-underline transition-colors duration-300"
+              style={{
+                color: "rgba(212, 232, 194, 0.45)",
+                letterSpacing: "0.08em",
+              }}
+            >
+              {link.label}
             </a>
           ))}
         </div>
