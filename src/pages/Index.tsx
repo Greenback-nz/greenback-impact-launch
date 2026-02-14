@@ -813,7 +813,7 @@ function ContactSection() {
                 Email
               </span>
               <a
-                href="mailto:fliss@greenback.solutions"
+                href="mailto:hello@greenback.solutions"
                 className="text-base no-underline"
                 style={{
                   color: "#d4e8c2",
@@ -821,7 +821,7 @@ function ContactSection() {
                   paddingBottom: "1px",
                 }}
               >
-                fliss@greenback.solutions
+                hello@greenback.solutions
               </a>
             </div>
 
