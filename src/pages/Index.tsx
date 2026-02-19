@@ -680,13 +680,8 @@ function TeamSection() {
   const team = [
     {
       name: "Fliss Roberts",
-      role: "CEO & Co-Founder",
+      role: "Founder",
       bio: "3 years running organic certification operations at BioGro NZ. Supported organic certification for over 850+ producers. 10 years operations management across healthcare and entrepreneurship. Full-stack developer.",
-    },
-    {
-      name: "Maggie Mabon",
-      role: "CMO & Co-Founder",
-      bio: "3 years leading marketing at BioGro NZ, achieving 45% conversion rates, 3x the industry average. Deep understanding of how to reach and convert organic operators at scale.",
     },
   ];
 
@@ -730,7 +725,7 @@ function TeamSection() {
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 max-w-[500px] gap-6">
           {team.map((person, i) => (
             <FadeIn key={i} delay={0.2 + i * 0.1}>
               <div
