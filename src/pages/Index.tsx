@@ -515,13 +515,6 @@ function Traction() {
     { value: "6", label: "Global certification databases integrated" },
   ];
 
-  const partners = [
-    "Creative HQ Aurora Activate Cohort 2025",
-    "AsureQuality",
-    "OANZ",
-    "BioGro NZ (alumni)",
-    "MPI Engagement",
-  ];
 
   return (
     <section
@@ -638,38 +631,6 @@ function Traction() {
           ))}
         </div>
 
-        {/* Partners */}
-        <FadeIn delay={0.5}>
-          <div
-            className="p-8 rounded-xl border text-center"
-            style={{
-              borderColor: "rgba(125, 180, 101, 0.08)",
-              background: "rgba(125, 180, 101, 0.02)",
-            }}
-          >
-            <h4
-              className="font-dm-mono text-xs tracking-widest uppercase mb-6"
-              style={{ color: "rgba(212, 232, 194, 0.4)", letterSpacing: "0.12em" }}
-            >
-              Ecosystem & Partnerships
-            </h4>
-            <div className="flex flex-wrap justify-center gap-3">
-              {partners.map((partner, i) => (
-                <span
-                  key={i}
-                  className="font-dm-mono text-xs px-4 py-2 rounded-full border"
-                  style={{
-                    color: "rgba(212, 232, 194, 0.55)",
-                    borderColor: "rgba(125, 180, 101, 0.12)",
-                    background: "rgba(125, 180, 101, 0.04)",
-                  }}
-                >
-                  {partner}
-                </span>
-              ))}
-            </div>
-          </div>
-        </FadeIn>
       </div>
     </section>
   );
