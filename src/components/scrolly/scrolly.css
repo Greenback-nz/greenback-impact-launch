@@ -1,0 +1,144 @@
+/* "The Ground Beneath Us" scrollytelling — ported from the prototype mockup.
+   Everything is scoped under .tgbu so the lime/amber palette and CSS variables
+   never collide with the site's global tokens (same pattern as .stealth-page). */
+
+.tgbu {
+  --bg: #0a0f0d;
+  --bg-2: #0f1714;
+  --ink: #f3f5f1;
+  --ink-dim: #8a948c;
+  --line: #1f2a25;
+  --green: #a3e635;
+  --green-soft: #4ade80;
+  --amber: #f59e0b;
+  --rust: #ea580c;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+  min-height: 100vh;
+}
+.tgbu * { box-sizing: border-box; }
+.tgbu ::selection { background: rgba(163, 230, 53, 0.25); color: var(--ink); }
+
+.tgbu .mono { font-family: "JetBrains Mono", monospace; letter-spacing: -0.01em; }
+.tgbu .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); }
+.tgbu .dim { color: var(--ink-dim); }
+.tgbu .stage { position: relative; min-height: 100vh; padding: 10vh 6vw; display: flex; flex-direction: column; justify-content: center; border-bottom: 1px solid var(--line); overflow: hidden; }
+.tgbu .stage h1 { font-weight: 600; font-size: clamp(40px, 7vw, 96px); line-height: 1.02; letter-spacing: -0.03em; margin: 0; }
+.tgbu .stage h2 { font-weight: 600; font-size: clamp(28px, 4.2vw, 56px); line-height: 1.05; letter-spacing: -0.025em; margin: 0 0 24px; }
+.tgbu .stage p { font-size: clamp(16px, 1.4vw, 20px); max-width: 56ch; color: var(--ink); }
+.tgbu .stage .lede { font-size: clamp(18px, 1.7vw, 24px); color: var(--ink-dim); max-width: 60ch; }
+
+.tgbu .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.tgbu .reveal.in { opacity: 1; transform: none; }
+.tgbu .reveal.delay-1 { transition-delay: 0.15s; }
+.tgbu .reveal.delay-2 { transition-delay: 0.3s; }
+.tgbu .reveal.delay-3 { transition-delay: 0.45s; }
+
+.tgbu .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: linear-gradient(to bottom, rgba(10, 15, 13, 0.85), rgba(10, 15, 13, 0)); backdrop-filter: blur(8px); }
+.tgbu .brand { font-weight: 600; letter-spacing: -0.01em; font-size: 14px; text-decoration: none; color: var(--ink); }
+.tgbu .brand span { color: var(--green); }
+.tgbu .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--green); z-index: 60; transition: width 0.1s linear; }
+.tgbu .chapter-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+
+.tgbu .hero { min-height: 100vh; display: grid; place-items: center; text-align: left; padding: 12vh 6vw; }
+.tgbu .hero-inner { width: 100%; max-width: 1200px; position: relative; z-index: 1; }
+.tgbu .hero h1 { font-size: clamp(54px, 9vw, 132px); }
+.tgbu .hero .tag { color: var(--green); }
+.tgbu .hero-bg { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 20% 30%, rgba(163, 230, 53, 0.12), transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(245, 158, 11, 0.08), transparent 55%); }
+.tgbu .hero-grid { position: absolute; inset: 0; pointer-events: none; opacity: 0.35; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%); }
+
+/* Optional Remotion hero video layer */
+.tgbu .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.55; }
+.tgbu .hero-video-scrim { position: absolute; inset: 0; z-index: 0; background: linear-gradient(180deg, rgba(10, 15, 13, 0.55), rgba(10, 15, 13, 0.82)); }
+
+.tgbu .choropleth { width: 100%; max-width: 640px; margin: 24px 0 0; position: relative; }
+.tgbu .choropleth svg { width: 100%; height: auto; display: block; }
+.tgbu .choropleth .country { stroke: var(--bg); stroke-width: 0.4; transition: fill 1.2s ease, opacity 0.6s ease; opacity: 0; }
+.tgbu .choropleth.in .country { opacity: 1; }
+.tgbu .choropleth .legend { display: flex; align-items: center; gap: 10px; margin-top: 14px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-dim); flex-wrap: wrap; }
+.tgbu .choropleth .legend-bar { height: 10px; width: 200px; background: linear-gradient(90deg, #1f2a25, #4ade80 40%, #a3e635 70%, #f59e0b); border-radius: 2px; }
+.tgbu .choropleth .tip,
+.tgbu .adapt-map .tip { position: absolute; pointer-events: none; opacity: 0; background: var(--bg-2); border: 1px solid var(--line); color: var(--ink); font-family: "JetBrains Mono", monospace; font-size: 12px; padding: 10px 12px; border-radius: 4px; transform: translate(-50%, -110%); white-space: nowrap; transition: opacity 0.15s ease; z-index: 10; }
+.tgbu .choropleth .country:hover,
+.tgbu .adapt-map .country:hover { stroke: var(--green); stroke-width: 1.2; }
+
+.tgbu .stat-row { display: flex; gap: 48px; flex-wrap: wrap; align-items: baseline; margin-top: 40px; }
+.tgbu .stat .num { font-size: clamp(56px, 9vw, 120px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--green); }
+.tgbu .stat .label { color: var(--ink-dim); font-size: 14px; max-width: 24ch; margin-top: 8px; }
+
+.tgbu .split { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center; }
+@media (max-width: 900px) { .tgbu .split { grid-template-columns: 1fr; gap: 40px; } }
+
+.tgbu .bar-stack { width: 100%; max-width: 720px; margin-top: 32px; }
+.tgbu .bar-stack .track { height: 36px; width: 100%; background: var(--line); border-radius: 4px; overflow: hidden; display: flex; }
+.tgbu .bar-stack .fill-pasture { height: 100%; width: 0%; background: linear-gradient(90deg, var(--amber), var(--rust)); transition: width 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.tgbu .bar-stack .fill-crop { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green), var(--green-soft)); transition: width 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s; }
+.tgbu .bar-stack.in .fill-pasture { width: 67%; }
+.tgbu .bar-stack.in .fill-crop { width: 33%; }
+.tgbu .bar-legend { display: flex; gap: 24px; margin-top: 12px; font-size: 13px; color: var(--ink-dim); flex-wrap: wrap; }
+.tgbu .legend-dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: middle; margin-right: 8px; }
+.tgbu .legend-dot.pasture { background: var(--amber); }
+.tgbu .legend-dot.crop { background: var(--green); }
+
+.tgbu .comparison-bar { margin-top: 56px; width: 100%; max-width: 760px; }
+.tgbu .comparison-bar .row { display: grid; grid-template-columns: 140px 1fr 100px; align-items: center; gap: 16px; margin: 12px 0; font-size: 14px; }
+.tgbu .comparison-bar .meter { height: 14px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.tgbu .comparison-bar .meter > div { height: 100%; width: 0; transition: width 1.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.tgbu .comparison-bar.in .row-emissions .meter > div { width: 100%; background: linear-gradient(90deg, var(--amber), var(--rust)); }
+.tgbu .comparison-bar.in .row-low .meter > div { width: 39%; background: var(--green); }
+.tgbu .comparison-bar.in .row-high .meter > div { width: 59%; background: var(--green); }
+
+.tgbu .adapt-wrap { display: grid; grid-template-columns: 1.45fr 0.55fr; gap: 64px; align-items: start; margin-top: 32px; }
+@media (max-width: 1100px) { .tgbu .adapt-wrap { grid-template-columns: 1fr; gap: 32px; } }
+.tgbu .toggle-bar { display: inline-flex; gap: 4px; padding: 4px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; margin-top: 24px; }
+.tgbu .toggle-bar button { appearance: none; background: transparent; color: var(--ink-dim); border: none; padding: 10px 18px; border-radius: 999px; font-family: "Space Grotesk", sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.25s ease, color 0.25s ease; }
+.tgbu .toggle-bar button.active { background: var(--green); color: #0a0f0d; }
+.tgbu .toggle-bar button:not(.active):hover { color: var(--ink); }
+.tgbu .toggle-bar button:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+.tgbu .adapt-map { position: relative; }
+.tgbu .adapt-map svg { width: 100%; height: auto; display: block; }
+.tgbu .adapt-map .country { stroke: var(--bg); stroke-width: 0.4; transition: fill 0.8s ease, opacity 0.6s ease; opacity: 0; }
+.tgbu .adapt-map.in .country { opacity: 1; }
+.tgbu .adapt-panel { display: flex; flex-direction: column; gap: 28px; }
+.tgbu .headline-stat { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent); }
+.tgbu .headline-stat .big { font-size: clamp(48px, 5vw, 72px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; color: var(--green); }
+.tgbu .headline-stat .small { margin-top: 12px; font-family: "JetBrains Mono", monospace; font-size: 12px; letter-spacing: 0.06em; color: var(--ink-dim); }
+.tgbu .top-list { font-family: "JetBrains Mono", monospace; font-size: 13px; }
+.tgbu .top-list h4 { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-dim); margin: 0 0 12px; }
+.tgbu .top-list .row { display: grid; grid-template-columns: 18px 1fr 60px; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.tgbu .top-list .row:last-child { border-bottom: none; }
+.tgbu .top-list .rank { color: var(--ink-dim); }
+.tgbu .top-list .name { color: var(--ink); font-family: "Space Grotesk", sans-serif; font-size: 14px; }
+.tgbu .top-list .score { color: var(--green); text-align: right; }
+.tgbu .legend-row { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-dim); flex-wrap: wrap; }
+.tgbu .legend-row .legend-bar { height: 10px; width: 220px; border-radius: 2px; background: linear-gradient(90deg, #1f2a25, #4ade80 40%, #a3e635 70%, #f59e0b); }
+
+.tgbu .bars-drought { margin-top: 36px; width: 100%; max-width: 640px; }
+.tgbu .bars-drought .b-row { display: grid; grid-template-columns: 140px 1fr 60px; align-items: center; gap: 12px; margin: 14px 0; font-family: "JetBrains Mono", monospace; font-size: 13px; }
+.tgbu .bars-drought .b-track { height: 28px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.tgbu .bars-drought .b-fill { height: 100%; width: 0; transition: width 1.4s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.tgbu .bars-drought.in .conv-normal { width: 88%; background: var(--amber); }
+.tgbu .bars-drought.in .conv-drought { width: 28%; background: var(--rust); }
+.tgbu .bars-drought.in .regen-normal { width: 92%; background: var(--green-soft); }
+.tgbu .bars-drought.in .regen-drought { width: 84%; background: var(--green); }
+
+.tgbu .cta { text-align: center; min-height: 80vh; display: grid; place-items: center; background: radial-gradient(ellipse at center, rgba(163, 230, 53, 0.08), transparent 60%); }
+.tgbu .cta .btn { display: inline-block; margin-top: 32px; padding: 16px 28px; border-radius: 999px; background: var(--green); color: #0a0f0d; font-weight: 600; text-decoration: none; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.tgbu .cta .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(163, 230, 53, 0.3); }
+.tgbu .cta .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.tgbu footer { padding: 40px 6vw; color: var(--ink-dim); font-size: 12px; }
+.tgbu footer a { color: var(--ink-dim); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tgbu .reveal { opacity: 1; transform: none; transition: none; }
+  .tgbu .choropleth .country,
+  .tgbu .adapt-map .country { opacity: 1; transition: none; }
+  .tgbu .bar-stack .fill-pasture,
+  .tgbu .bar-stack .fill-crop,
+  .tgbu .comparison-bar .meter > div,
+  .tgbu .bars-drought .b-fill { transition: none; }
+}

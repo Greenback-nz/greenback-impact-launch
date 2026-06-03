@@ -12,6 +12,12 @@ dist
 dist-ssr
 *.local
 
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Remotion render artifacts (copied into public/ instead)
+docs/scrollytelling/remotion-hero/out
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
