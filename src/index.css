@@ -1,109 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&family=Instrument+Serif&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Warm white background */
-    --background: 50 33% 97%;
-    /* Deep forest green foreground */
-    --foreground: 153 44% 15%;
+    /* TGBU dark palette */
+    --background: 156 20% 5%;
+    --foreground: 90 17% 95%;
 
-    --card: 50 33% 99%;
-    --card-foreground: 153 44% 15%;
+    --card: 158 21% 7%;
+    --card-foreground: 90 17% 95%;
 
-    --popover: 50 33% 99%;
-    --popover-foreground: 153 44% 15%;
+    --popover: 158 21% 7%;
+    --popover-foreground: 90 17% 95%;
 
-    /* Deep forest green primary */
-    --primary: 153 44% 15%;
-    --primary-foreground: 50 33% 97%;
+    --primary: 83 78% 55%;
+    --primary-foreground: 156 20% 5%;
 
-    --secondary: 153 20% 92%;
-    --secondary-foreground: 153 44% 15%;
+    --secondary: 152 15% 10%;
+    --secondary-foreground: 90 17% 95%;
 
-    --muted: 50 20% 93%;
-    --muted-foreground: 153 20% 40%;
+    --muted: 158 21% 7%;
+    --muted-foreground: 132 4% 56%;
 
-    /* Ochre/gold accent */
-    --accent: 30 52% 64%;
-    --accent-foreground: 153 44% 10%;
+    --accent: 83 78% 55%;
+    --accent-foreground: 156 20% 5%;
 
-    /* Ochre for CTAs */
-    --ochre: 30 52% 64%;
-    --ochre-foreground: 50 33% 97%;
+    /* Lime green for CTAs */
+    --ochre: 83 78% 55%;
+    --ochre-foreground: 156 20% 5%;
 
-    /* Deep forest green */
-    --forest: 153 44% 15%;
-    --forest-foreground: 50 33% 97%;
+    /* Dark green sections */
+    --forest: 152 15% 14%;
+    --forest-foreground: 90 17% 95%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 90 17% 95%;
 
-    --border: 153 15% 85%;
-    --input: 153 15% 85%;
-    --ring: 153 44% 15%;
+    --border: 152 15% 14%;
+    --input: 152 15% 18%;
+    --ring: 83 78% 55%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 50 33% 98%;
-    --sidebar-foreground: 153 44% 15%;
-    --sidebar-primary: 153 44% 15%;
-    --sidebar-primary-foreground: 50 33% 97%;
-    --sidebar-accent: 30 52% 64%;
-    --sidebar-accent-foreground: 153 44% 10%;
-    --sidebar-border: 153 15% 85%;
-    --sidebar-ring: 153 44% 15%;
-  }
-
-  .dark {
-    --background: 153 44% 8%;
-    --foreground: 50 33% 95%;
-
-    --card: 153 35% 12%;
-    --card-foreground: 50 33% 95%;
-
-    --popover: 153 35% 12%;
-    --popover-foreground: 50 33% 95%;
-
-    --primary: 153 44% 55%;
-    --primary-foreground: 153 44% 8%;
-
-    --secondary: 153 25% 18%;
-    --secondary-foreground: 50 33% 95%;
-
-    --muted: 153 20% 15%;
-    --muted-foreground: 153 15% 65%;
-
-    --accent: 30 52% 70%;
-    --accent-foreground: 153 44% 8%;
-
-    --ochre: 30 52% 70%;
-    --ochre-foreground: 153 44% 8%;
-
-    --forest: 153 44% 55%;
-    --forest-foreground: 153 44% 8%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 153 20% 25%;
-    --input: 153 20% 25%;
-    --ring: 153 44% 55%;
-    --sidebar-background: 153 44% 10%;
-    --sidebar-foreground: 50 33% 95%;
-    --sidebar-primary: 153 44% 55%;
-    --sidebar-primary-foreground: 50 33% 97%;
-    --sidebar-accent: 30 52% 64%;
-    --sidebar-accent-foreground: 50 33% 95%;
-    --sidebar-border: 153 20% 25%;
-    --sidebar-ring: 153 44% 55%;
+    --sidebar-background: 158 21% 7%;
+    --sidebar-foreground: 90 17% 95%;
+    --sidebar-primary: 83 78% 55%;
+    --sidebar-primary-foreground: 156 20% 5%;
+    --sidebar-accent: 83 78% 55%;
+    --sidebar-accent-foreground: 156 20% 5%;
+    --sidebar-border: 152 15% 14%;
+    --sidebar-ring: 83 78% 55%;
   }
 }
 
@@ -113,35 +62,30 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', sans-serif;
+    @apply bg-background text-foreground;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+  }
+
+  ::selection {
+    background: rgba(163, 230, 53, 0.25);
+    color: #f3f5f1;
   }
 }
 
-@layer utilities {
-  .gradient-bg {
-    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(153 30% 95%) 50%, hsl(var(--background)) 100%);
-  }
+/* Mono utility */
+.font-mono {
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* Stealth / Investor landing page styles */
+/* Stealth / landing page styles */
 .stealth-page {
-  background: #080c08;
-  color: #d4e8c2;
-  font-family: 'DM Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.stealth-page ::selection {
-  background: rgba(125, 180, 101, 0.25);
-  color: #e8f0e0;
-}
-
-.font-instrument {
-  font-family: 'Instrument Serif', serif;
+  background: #0a0f0d;
+  color: #f3f5f1;
 }
 
 .font-dm-mono {
-  font-family: 'DM Mono', monospace;
+  font-family: 'JetBrains Mono', monospace;
 }

@@ -1,9 +1,30 @@
 import { Layout } from "@/components/layout";
-import { Section } from "@/components/ui/section";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Compass, Code, Rocket, ArrowRight, Check } from "lucide-react";
+import { useRef, useState, useEffect, ReactNode } from "react";
+import { Compass, Code, Rocket, Check } from "lucide-react";
+
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return [ref, inView] as const;
+}
+
+function FadeIn({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+  const [ref, inView] = useInView();
+  return (
+    <div ref={ref} className={className} style={{
+      opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)",
+      transition: `opacity 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
+    }}>{children}</div>
+  );
+}
 
 const services = [
   {
@@ -50,120 +71,170 @@ const services = [
 ];
 
 const processSteps = [
-  {
-    number: "1",
-    title: "Discovery Call",
-    description: "We chat about your vision, where you're at, and what you need"
-  },
-  {
-    number: "2",
-    title: "Scope & Proposal",
-    description: "I put together a clear plan with timeline and investment"
-  },
-  {
-    number: "3",
-    title: "Build Sprints",
-    description: "We work in focused sprints with regular check-ins"
-  },
-  {
-    number: "4",
-    title: "Launch & Handover",
-    description: "Your product goes live with full documentation and support"
-  }
+  { number: "01", title: "Discovery Call", description: "We chat about your vision, where you're at, and what you need" },
+  { number: "02", title: "Scope & Proposal", description: "I put together a clear plan with timeline and investment" },
+  { number: "03", title: "Build Sprints", description: "We work in focused sprints with regular check-ins" },
+  { number: "04", title: "Launch & Handover", description: "Your product goes live with full documentation and support" },
 ];
 
 const Services = () => {
   return (
     <Layout>
       {/* Hero */}
-      <Section className="bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Services
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Flexible support tailored to your stage and needs
-          </p>
+      <section className="py-24 md:py-32" style={{ background: "#0a0f0d" }}>
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center">
+          <FadeIn>
+            <div
+              className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+              style={{ color: "#a3e635", letterSpacing: "0.18em" }}
+            >
+              Services
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h1
+              className="text-4xl md:text-5xl font-semibold mb-6"
+              style={{ color: "#f3f5f1", letterSpacing: "-0.03em" }}
+            >
+              Flexible support tailored to your stage
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-base md:text-lg max-w-[560px] mx-auto" style={{ color: "#8a948c" }}>
+              From strategic clarity to technical builds &mdash; pick the level of support that fits.
+            </p>
+          </FadeIn>
         </div>
-      </Section>
+      </section>
 
-      {/* Services Detail */}
-      <Section className="bg-background">
-        <div className="space-y-12">
+      {/* Services */}
+      <section className="py-24 md:py-32" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12 space-y-6">
           {services.map((service, index) => (
-            <Card key={index} className="border-border overflow-hidden">
-              <div className="grid md:grid-cols-3">
-                <CardHeader className="bg-forest/5 md:col-span-1">
-                  <div className="p-4 bg-forest/10 rounded-xl w-fit mb-4">
-                    <service.icon className="h-10 w-10 text-forest" />
+            <FadeIn key={index} delay={index * 0.1}>
+              <div
+                className="rounded-lg border overflow-hidden"
+                style={{ borderColor: "#1f2a25", background: "rgba(163, 230, 53, 0.02)" }}
+              >
+                <div className="grid md:grid-cols-3">
+                  <div className="p-8" style={{ background: "rgba(163, 230, 53, 0.04)" }}>
+                    <div
+                      className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                      style={{ background: "rgba(163, 230, 53, 0.1)", border: "1px solid rgba(163, 230, 53, 0.15)" }}
+                    >
+                      <service.icon className="h-6 w-6" style={{ color: "#a3e635" }} />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-2" style={{ color: "#f3f5f1" }}>
+                      {service.title}
+                    </h3>
+                    <div className="font-dm-mono text-xs tracking-wider" style={{ color: "#a3e635" }}>
+                      {service.pricing}
+                    </div>
                   </div>
-                  <CardTitle className="text-2xl text-foreground">{service.title}</CardTitle>
-                  <CardDescription className="text-ochre font-medium">
-                    {service.pricing}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="md:col-span-2 p-6">
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <ul className="space-y-3 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-start gap-3">
-                        <Check className="h-5 w-5 text-forest flex-shrink-0 mt-0.5" />
-                        <span className="text-foreground/80">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="p-4 bg-ochre/10 rounded-lg">
-                    <p className="text-sm">
-                      <span className="font-semibold text-foreground">Ideal for: </span>
-                      <span className="text-muted-foreground">{service.idealFor}</span>
-                    </p>
+                  <div className="md:col-span-2 p-8">
+                    <p className="text-sm mb-6" style={{ color: "#8a948c" }}>{service.description}</p>
+                    <ul className="space-y-3 mb-6">
+                      {service.features.map((feature, fi) => (
+                        <li key={fi} className="flex items-start gap-3">
+                          <Check className="h-4 w-4 flex-shrink-0 mt-0.5" style={{ color: "#a3e635" }} />
+                          <span className="text-sm" style={{ color: "#f3f5f1" }}>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <div
+                      className="p-4 rounded-lg"
+                      style={{ background: "rgba(163, 230, 53, 0.05)", border: "1px solid #1f2a25" }}
+                    >
+                      <p className="text-sm">
+                        <span className="font-semibold" style={{ color: "#f3f5f1" }}>Ideal for: </span>
+                        <span style={{ color: "#8a948c" }}>{service.idealFor}</span>
+                      </p>
+                    </div>
                   </div>
-                </CardContent>
+                </div>
               </div>
-            </Card>
+            </FadeIn>
           ))}
         </div>
-      </Section>
+      </section>
 
       {/* How I Work */}
-      <Section className="bg-secondary/30">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-12">
-            How I Work
-          </h2>
+      <section className="py-24 md:py-32" style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}>
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12">
+          <FadeIn>
+            <div
+              className="font-dm-mono text-xs tracking-widest uppercase mb-6 text-center"
+              style={{ color: "#a3e635", letterSpacing: "0.18em" }}
+            >
+              Process
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h2
+              className="text-3xl md:text-4xl font-semibold text-center mb-16"
+              style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
+            >
+              How I Work
+            </h2>
+          </FadeIn>
           <div className="grid md:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-ochre text-ochre-foreground rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
-                  {step.number}
+              <FadeIn key={index} delay={0.15 + index * 0.08}>
+                <div className="text-center">
+                  <div
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-dm-mono text-sm font-medium mx-auto mb-4"
+                    style={{
+                      background: "rgba(163, 230, 53, 0.1)",
+                      color: "#a3e635",
+                      border: "1px solid rgba(163, 230, 53, 0.2)",
+                    }}
+                  >
+                    {step.number}
+                  </div>
+                  <h3 className="font-semibold mb-2" style={{ color: "#f3f5f1" }}>{step.title}</h3>
+                  <p className="text-sm" style={{ color: "#8a948c" }}>{step.description}</p>
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">{step.title}</h3>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
-              </div>
+              </FadeIn>
             ))}
           </div>
         </div>
-      </Section>
+      </section>
 
       {/* CTA */}
-      <Section className="bg-forest text-forest-foreground">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-          <p className="text-forest-foreground/80 mb-8">
-            Let's talk about your project and find the right support package for you.
-          </p>
-          <Button 
-            asChild
-            size="lg"
-            className="bg-ochre hover:bg-ochre/90 text-ochre-foreground"
-          >
-            <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">
-              Book a Discovery Call
-              <ArrowRight className="ml-2 h-5 w-5" />
+      <section
+        className="py-24 md:py-32 text-center"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(163, 230, 53, 0.08), transparent 60%), #0f1714",
+          borderTop: "1px solid #1f2a25",
+        }}
+      >
+        <div className="max-w-[600px] mx-auto px-6 md:px-12">
+          <FadeIn>
+            <h2
+              className="text-3xl md:text-4xl font-semibold mb-4"
+              style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
+            >
+              Ready to get started?
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mb-8" style={{ color: "#8a948c" }}>
+              Let's talk about your project and find the right support package for you.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <a
+              href="https://calendly.com/hello-greenback/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full no-underline transition-all duration-300"
+              style={{ background: "#a3e635", color: "#0a0f0d" }}
+            >
+              Book a Discovery Call &rarr;
             </a>
-          </Button>
+          </FadeIn>
         </div>
-      </Section>
+      </section>
     </Layout>
   );
 };

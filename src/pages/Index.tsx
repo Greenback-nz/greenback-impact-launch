@@ -52,7 +52,7 @@ function FadeIn({ children, delay = 0, className = "" }: { children: ReactNode; 
       style={{
         opacity: inView ? 1 : 0,
         transform: inView ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 0.7s ease ${delay}s, transform 0.7s ease ${delay}s`,
+        transition: `opacity 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
       }}
     >
       {children}
@@ -66,7 +66,7 @@ function Nav() {
   const [scrolled, setScrolled] = useState(false);
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", handler);
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
@@ -87,9 +87,9 @@ function Nav() {
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled ? "rgba(8, 12, 8, 0.95)" : "transparent",
-        backdropFilter: scrolled ? "blur(20px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(125, 180, 101, 0.08)" : "1px solid transparent",
+        background: scrolled ? "rgba(10, 15, 13, 0.95)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(163, 230, 53, 0.08)" : "1px solid transparent",
       }}
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 h-16 flex items-center justify-between">
@@ -99,8 +99,8 @@ function Nav() {
         >
           <img src="/logo.png" alt="Greenback" className="h-7 w-7" />
           <span
-            className="font-dm-mono text-sm tracking-wider"
-            style={{ color: "#7db465", letterSpacing: "0.12em" }}
+            className="font-dm-mono text-sm"
+            style={{ color: "#a3e635", letterSpacing: "0.12em" }}
           >
             greenback.solutions
           </span>
@@ -113,7 +113,7 @@ function Nav() {
               href={`#${item.id}`}
               className="font-dm-mono text-xs tracking-wider no-underline transition-colors duration-300"
               style={{
-                color: active === item.id ? "#7db465" : "rgba(212, 232, 194, 0.45)",
+                color: active === item.id ? "#a3e635" : "#8a948c",
                 letterSpacing: "0.08em",
               }}
             >
@@ -122,7 +122,7 @@ function Nav() {
           ))}
           <span
             className="w-px h-4"
-            style={{ background: "rgba(125, 180, 101, 0.15)" }}
+            style={{ background: "rgba(163, 230, 53, 0.15)" }}
           />
           {serviceLinks.map((link) => (
             <a
@@ -130,7 +130,7 @@ function Nav() {
               href={link.href}
               className="font-dm-mono text-xs tracking-wider no-underline transition-colors duration-300"
               style={{
-                color: "rgba(212, 232, 194, 0.45)",
+                color: "#8a948c",
                 letterSpacing: "0.08em",
               }}
             >
@@ -154,25 +154,24 @@ function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "#080c08" }}
+      style={{ background: "#0a0f0d" }}
     >
-      {/* Subtle grid pattern */}
+      {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.35]"
         style={{
-          backgroundImage: "linear-gradient(rgba(125,180,101,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(125,180,101,0.3) 1px, transparent 1px)",
+          backgroundImage: "linear-gradient(#1f2a25 1px, transparent 1px), linear-gradient(90deg, #1f2a25 1px, transparent 1px)",
           backgroundSize: "80px 80px",
+          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+          WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 75%)",
         }}
       />
 
-      {/* Gradient orb */}
+      {/* Gradient orbs */}
       <div
-        className="absolute w-[600px] h-[600px] rounded-full"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(125,180,101,0.06) 0%, transparent 70%)",
-          top: "20%",
-          left: "50%",
-          transform: "translateX(-50%)",
+          background: "radial-gradient(ellipse at 20% 30%, rgba(163, 230, 53, 0.12), transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(245, 158, 11, 0.08), transparent 55%)",
         }}
       />
 
@@ -188,9 +187,9 @@ function Hero() {
           <span
             className="font-dm-mono text-xs tracking-widest uppercase inline-block px-4 py-2 rounded-full border"
             style={{
-              color: "#7db465",
-              borderColor: "rgba(125, 180, 101, 0.2)",
-              background: "rgba(125, 180, 101, 0.05)",
+              color: "#a3e635",
+              borderColor: "rgba(163, 230, 53, 0.2)",
+              background: "rgba(163, 230, 53, 0.05)",
               letterSpacing: "0.15em",
             }}
           >
@@ -199,20 +198,17 @@ function Hero() {
         </div>
 
         <h1
-          className="font-instrument text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] mb-8"
-          style={{ color: "#e8f0e0" }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold leading-[1.02] mb-8"
+          style={{ color: "#f3f5f1", letterSpacing: "-0.03em" }}
         >
           Farming that feeds
           <br />
-          <span style={{ color: "#7db465", fontStyle: "italic" }}>forever</span>
+          <span style={{ color: "#a3e635" }}>forever</span>
         </h1>
 
         <p
           className="text-base md:text-lg leading-relaxed max-w-[640px] mx-auto mb-10"
-          style={{
-            fontFamily: "'DM Sans', sans-serif",
-            color: "rgba(212, 232, 194, 0.6)",
-          }}
+          style={{ color: "#8a948c" }}
         >
           We build the data infrastructure that connects agricultural
           certification, environmental verification, and climate finance
@@ -222,27 +218,24 @@ function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#contact"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium rounded-lg no-underline transition-all duration-300"
+            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full no-underline transition-all duration-300"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              background: "#7db465",
-              color: "#080c08",
-              letterSpacing: "0.02em",
+              background: "#a3e635",
+              color: "#0a0f0d",
             }}
           >
             Get in Touch
           </a>
           <a
             href="#thesis"
-            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium rounded-lg no-underline transition-all duration-300 border"
+            className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium rounded-full no-underline transition-all duration-300 border"
             style={{
-              fontFamily: "'DM Sans', sans-serif",
-              color: "#d4e8c2",
-              borderColor: "rgba(212, 232, 194, 0.15)",
+              color: "#f3f5f1",
+              borderColor: "rgba(163, 230, 53, 0.15)",
               background: "transparent",
             }}
           >
-            Learn more →
+            Learn more &darr;
           </a>
         </div>
       </div>
@@ -274,26 +267,26 @@ function Thesis() {
     <section
       id="thesis"
       className="py-24 md:py-32"
-      style={{ background: "#080c08" }}
+      style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
         <FadeIn>
-          <span
-            className="font-dm-mono text-xs tracking-widest uppercase block mb-6"
-            style={{ color: "#7db465", letterSpacing: "0.15em" }}
+          <div
+            className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+            style={{ color: "#a3e635", letterSpacing: "0.18em" }}
           >
             The Problem
-          </span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h2
-            className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.15] mb-16 max-w-[800px]"
-            style={{ color: "#e8f0e0" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.05] mb-16 max-w-[800px]"
+            style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
             In New Zealand, the only way to earn nature credits is to stop farming.
             There is no system that rewards{" "}
-            <span style={{ color: "#7db465", fontStyle: "italic" }}>
+            <span style={{ color: "#a3e635" }}>
               how you farm.
             </span>
           </h2>
@@ -303,27 +296,27 @@ function Thesis() {
           {stats.map((item, i) => (
             <FadeIn key={i} delay={0.15 + i * 0.1}>
               <div
-                className="p-8 rounded-xl border"
+                className="p-8 rounded-lg border"
                 style={{
-                  borderColor: "rgba(125, 180, 101, 0.1)",
-                  background: "rgba(125, 180, 101, 0.03)",
+                  borderColor: "#1f2a25",
+                  background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)",
                 }}
               >
                 <div
-                  className="font-instrument text-4xl md:text-5xl mb-3"
-                  style={{ color: "#7db465" }}
+                  className="text-4xl md:text-5xl font-semibold mb-3"
+                  style={{ color: "#a3e635", letterSpacing: "-0.04em" }}
                 >
                   {item.stat}
                 </div>
                 <div
                   className="text-sm leading-relaxed mb-3"
-                  style={{ color: "rgba(212, 232, 194, 0.75)" }}
+                  style={{ color: "#f3f5f1" }}
                 >
                   {item.label}
                 </div>
                 <div
                   className="font-dm-mono text-[10px] tracking-wide"
-                  style={{ color: "rgba(212, 232, 194, 0.3)" }}
+                  style={{ color: "#8a948c" }}
                 >
                   {item.note}
                 </div>
@@ -334,15 +327,15 @@ function Thesis() {
 
         <FadeIn delay={0.4}>
           <div
-            className="max-w-[700px] mx-auto p-8 rounded-xl border-l-2 text-center"
+            className="max-w-[700px] mx-auto p-8 rounded-lg border-l-2 text-center"
             style={{
-              borderColor: "rgba(125, 180, 101, 0.2)",
-              background: "rgba(125, 180, 101, 0.02)",
+              borderColor: "rgba(163, 230, 53, 0.2)",
+              background: "rgba(163, 230, 53, 0.02)",
             }}
           >
             <p
               className="text-base leading-relaxed"
-              style={{ color: "rgba(212, 232, 194, 0.65)" }}
+              style={{ color: "#8a948c" }}
             >
               Every nature credit scheme in New Zealand requires taking land out of production. Plant trees, retire pasture, fence off waterways. None of them measure or reward the farming practices that actually build soil health, sequester carbon, or protect biodiversity on working land. Certification data sits in disconnected systems. Verification is manual and expensive. The result: farmers doing the right thing get nothing for it. Greenback exists to fix that.
             </p>
@@ -384,26 +377,26 @@ function PlatformSection() {
     <section
       id="platform"
       className="py-24 md:py-32"
-      style={{ background: "#0a0f0a" }}
+      style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
         <FadeIn>
-          <span
-            className="font-dm-mono text-xs tracking-widest uppercase block mb-6"
-            style={{ color: "#7db465", letterSpacing: "0.15em" }}
+          <div
+            className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+            style={{ color: "#a3e635", letterSpacing: "0.18em" }}
           >
             What We Build
-          </span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h2
-            className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.15] mb-6 max-w-[800px]"
-            style={{ color: "#e8f0e0" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.05] mb-6 max-w-[800px]"
+            style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
             Verification infrastructure for
             <br />
-            <span style={{ color: "#7db465", fontStyle: "italic" }}>
+            <span style={{ color: "#a3e635" }}>
               ecosystem services payments
             </span>
           </h2>
@@ -412,7 +405,7 @@ function PlatformSection() {
         <FadeIn delay={0.15}>
           <p
             className="text-base md:text-lg leading-relaxed max-w-[640px] mb-16"
-            style={{ color: "rgba(212, 232, 194, 0.6)" }}
+            style={{ color: "#8a948c" }}
           >
             We don't originate credits or own data. We build the infrastructure
             that makes verified ecosystem services payments possible,
@@ -426,25 +419,25 @@ function PlatformSection() {
           {layers.map((layer, i) => (
             <FadeIn key={i} delay={0.2 + i * 0.1}>
               <div
-                className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 md:p-8 rounded-xl border transition-all duration-300"
+                className="flex flex-col md:flex-row items-start md:items-center justify-between p-6 md:p-8 rounded-lg border transition-all duration-300"
                 style={{
-                  borderColor: "rgba(125, 180, 101, 0.1)",
+                  borderColor: "#1f2a25",
                   background:
                     i === 0
-                      ? "rgba(125, 180, 101, 0.06)"
-                      : "rgba(125, 180, 101, 0.02)",
+                      ? "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)"
+                      : "rgba(163, 230, 53, 0.02)",
                 }}
               >
                 <div className="flex-1 mb-4 md:mb-0">
                   <h3
                     className="text-lg font-semibold mb-2"
-                    style={{ color: "#e8f0e0" }}
+                    style={{ color: "#f3f5f1" }}
                   >
                     {layer.name}
                   </h3>
                   <p
                     className="text-sm leading-relaxed max-w-[500px]"
-                    style={{ color: "rgba(212, 232, 194, 0.55)" }}
+                    style={{ color: "#8a948c" }}
                   >
                     {layer.desc}
                   </p>
@@ -454,16 +447,16 @@ function PlatformSection() {
                   style={{
                     color:
                       layer.status === "Live"
-                        ? "#7db465"
-                        : "rgba(212, 232, 194, 0.4)",
+                        ? "#a3e635"
+                        : "#8a948c",
                   }}
                 >
                   {layer.status === "Live" && (
                     <span
                       className="w-2 h-2 rounded-full inline-block"
                       style={{
-                        background: "#7db465",
-                        boxShadow: "0 0 8px rgba(125, 180, 101, 0.5)",
+                        background: "#a3e635",
+                        boxShadow: "0 0 8px rgba(163, 230, 53, 0.5)",
                       }}
                     />
                   )}
@@ -482,19 +475,19 @@ function PlatformSection() {
                 key={i}
                 className="text-center p-4 rounded-lg border"
                 style={{
-                  borderColor: "rgba(125, 180, 101, 0.08)",
-                  background: "rgba(125, 180, 101, 0.02)",
+                  borderColor: "#1f2a25",
+                  background: "rgba(163, 230, 53, 0.02)",
                 }}
               >
                 <div
                   className="font-dm-mono text-xs font-medium tracking-wider mb-1"
-                  style={{ color: "#7db465" }}
+                  style={{ color: "#a3e635" }}
                 >
                   {item.label}
                 </div>
                 <div
                   className="text-[11px]"
-                  style={{ color: "rgba(212, 232, 194, 0.35)" }}
+                  style={{ color: "#8a948c" }}
                 >
                   {item.sub}
                 </div>
@@ -516,31 +509,30 @@ function Traction() {
     { value: "6", label: "Global certification databases integrated" },
   ];
 
-
   return (
     <section
       id="traction"
       className="py-24 md:py-32"
-      style={{ background: "#080c08" }}
+      style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
         <FadeIn>
-          <span
-            className="font-dm-mono text-xs tracking-widest uppercase block mb-6"
-            style={{ color: "#7db465", letterSpacing: "0.15em" }}
+          <div
+            className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+            style={{ color: "#a3e635", letterSpacing: "0.18em" }}
           >
             Traction
-          </span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h2
-            className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.15] mb-16 max-w-[800px]"
-            style={{ color: "#e8f0e0" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.05] mb-16 max-w-[800px]"
+            style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
             Building in production,
             <br />
-            <span style={{ color: "#7db465", fontStyle: "italic" }}>
+            <span style={{ color: "#a3e635" }}>
               not in theory
             </span>
           </h2>
@@ -549,38 +541,38 @@ function Traction() {
         {/* Live product callout */}
         <FadeIn delay={0.2}>
           <div
-            className="p-8 md:p-10 rounded-2xl border mb-16"
+            className="p-8 md:p-10 rounded-lg border mb-16"
             style={{
-              borderColor: "rgba(125, 180, 101, 0.15)",
-              background: "linear-gradient(135deg, rgba(125,180,101,0.06) 0%, rgba(125,180,101,0.02) 100%)",
+              borderColor: "#1f2a25",
+              background: "linear-gradient(135deg, rgba(163, 230, 53, 0.06) 0%, rgba(163, 230, 53, 0.02) 100%)",
             }}
           >
             <div className="flex items-center gap-2 mb-4">
               <span
                 className="w-2 h-2 rounded-full"
                 style={{
-                  background: "#7db465",
-                  boxShadow: "0 0 8px rgba(125, 180, 101, 0.5)",
+                  background: "#a3e635",
+                  boxShadow: "0 0 8px rgba(163, 230, 53, 0.5)",
                 }}
               />
               <span
                 className="font-dm-mono text-xs tracking-wider"
-                style={{ color: "#7db465" }}
+                style={{ color: "#a3e635" }}
               >
                 Live Product
               </span>
             </div>
 
             <h3
-              className="font-instrument text-2xl md:text-3xl mb-4"
-              style={{ color: "#e8f0e0" }}
+              className="text-2xl md:text-3xl font-semibold mb-4"
+              style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
             >
               ANZ Organic Compliance Database
             </h3>
 
             <p
               className="text-sm md:text-base leading-relaxed max-w-[600px] mb-6"
-              style={{ color: "rgba(212, 232, 194, 0.6)" }}
+              style={{ color: "#8a948c" }}
             >
               Our first product: real-time supplier verification, recipe
               compliance automation, and certification data aggregation across
@@ -594,12 +586,12 @@ function Traction() {
               rel="noopener noreferrer"
               className="font-dm-mono text-sm no-underline transition-opacity"
               style={{
-                color: "#7db465",
-                borderBottom: "1px solid rgba(125, 180, 101, 0.3)",
+                color: "#a3e635",
+                borderBottom: "1px solid rgba(163, 230, 53, 0.3)",
                 paddingBottom: "2px",
               }}
             >
-              anzoc.co.nz →
+              anzoc.co.nz &rarr;
             </a>
           </div>
         </FadeIn>
@@ -609,21 +601,21 @@ function Traction() {
           {metrics.map((item, i) => (
             <FadeIn key={i} delay={0.25 + i * 0.08}>
               <div
-                className="text-center p-6 rounded-xl border"
+                className="text-center p-6 rounded-lg border"
                 style={{
-                  borderColor: "rgba(125, 180, 101, 0.08)",
-                  background: "rgba(125, 180, 101, 0.02)",
+                  borderColor: "#1f2a25",
+                  background: "rgba(163, 230, 53, 0.02)",
                 }}
               >
                 <div
-                  className="font-instrument text-3xl md:text-4xl mb-2"
-                  style={{ color: "#7db465" }}
+                  className="text-3xl md:text-4xl font-semibold mb-2"
+                  style={{ color: "#a3e635", letterSpacing: "-0.04em" }}
                 >
                   {item.value}
                 </div>
                 <div
                   className="text-xs leading-relaxed"
-                  style={{ color: "rgba(212, 232, 194, 0.5)" }}
+                  style={{ color: "#8a948c" }}
                 >
                   {item.label}
                 </div>
@@ -631,7 +623,6 @@ function Traction() {
             </FadeIn>
           ))}
         </div>
-
       </div>
     </section>
   );
@@ -651,26 +642,26 @@ function TeamSection() {
     <section
       id="team"
       className="py-24 md:py-32"
-      style={{ background: "#0a0f0a" }}
+      style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
         <FadeIn>
-          <span
-            className="font-dm-mono text-xs tracking-widest uppercase block mb-6"
-            style={{ color: "#7db465", letterSpacing: "0.15em" }}
+          <div
+            className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+            style={{ color: "#a3e635", letterSpacing: "0.18em" }}
           >
             Team
-          </span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h2
-            className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal leading-[1.15] mb-6 max-w-[800px]"
-            style={{ color: "#e8f0e0" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold leading-[1.05] mb-6 max-w-[800px]"
+            style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
             Built by operators,
             <br />
-            <span style={{ color: "#7db465", fontStyle: "italic" }}>
+            <span style={{ color: "#a3e635" }}>
               not observers
             </span>
           </h2>
@@ -679,7 +670,7 @@ function TeamSection() {
         <FadeIn delay={0.15}>
           <p
             className="text-base md:text-lg leading-relaxed max-w-[640px] mb-16"
-            style={{ color: "rgba(212, 232, 194, 0.6)" }}
+            style={{ color: "#8a948c" }}
           >
             We've been inside the certification system. We know where the
             process breaks, what auditors actually check, and why operators
@@ -691,19 +682,19 @@ function TeamSection() {
           {team.map((person, i) => (
             <FadeIn key={i} delay={0.2 + i * 0.1}>
               <div
-                className="p-8 rounded-xl border"
+                className="p-8 rounded-lg border"
                 style={{
-                  borderColor: "rgba(125, 180, 101, 0.1)",
-                  background: "rgba(125, 180, 101, 0.03)",
+                  borderColor: "#1f2a25",
+                  background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)",
                 }}
               >
                 {/* Initials avatar */}
                 <div
                   className="w-14 h-14 rounded-full flex items-center justify-center text-lg font-semibold mb-5"
                   style={{
-                    background: "rgba(125, 180, 101, 0.1)",
-                    color: "#7db465",
-                    border: "1px solid rgba(125, 180, 101, 0.2)",
+                    background: "rgba(163, 230, 53, 0.1)",
+                    color: "#a3e635",
+                    border: "1px solid rgba(163, 230, 53, 0.2)",
                   }}
                 >
                   {person.name
@@ -714,21 +705,21 @@ function TeamSection() {
 
                 <h3
                   className="text-xl font-semibold mb-1"
-                  style={{ color: "#e8f0e0" }}
+                  style={{ color: "#f3f5f1" }}
                 >
                   {person.name}
                 </h3>
 
                 <div
                   className="font-dm-mono text-xs tracking-wider mb-4"
-                  style={{ color: "#7db465" }}
+                  style={{ color: "#a3e635" }}
                 >
                   {person.role}
                 </div>
 
                 <p
                   className="text-sm leading-relaxed"
-                  style={{ color: "rgba(212, 232, 194, 0.55)" }}
+                  style={{ color: "#8a948c" }}
                 >
                   {person.bio}
                 </p>
@@ -747,22 +738,22 @@ function ContactSection() {
     <section
       id="contact"
       className="py-24 md:py-32"
-      style={{ background: "#080c08" }}
+      style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">
         <FadeIn>
-          <span
-            className="font-dm-mono text-xs tracking-widest uppercase block mb-6"
-            style={{ color: "#7db465", letterSpacing: "0.15em" }}
+          <div
+            className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+            style={{ color: "#a3e635", letterSpacing: "0.18em" }}
           >
             Contact
-          </span>
+          </div>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <h2
-            className="font-instrument text-3xl md:text-4xl lg:text-5xl font-normal mb-6"
-            style={{ color: "#e8f0e0" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6"
+            style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
             Let's talk
           </h2>
@@ -771,7 +762,7 @@ function ContactSection() {
         <FadeIn delay={0.15}>
           <p
             className="text-base leading-relaxed mb-12 max-w-[520px] mx-auto"
-            style={{ color: "rgba(212, 232, 194, 0.6)" }}
+            style={{ color: "#8a948c" }}
           >
             We're open to conversations with investors, research partners, grant
             bodies, and organisations aligned with our mission to make
@@ -784,7 +775,7 @@ function ContactSection() {
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
-                style={{ color: "rgba(212, 232, 194, 0.35)" }}
+                style={{ color: "#8a948c" }}
               >
                 Email
               </span>
@@ -792,8 +783,8 @@ function ContactSection() {
                 href="mailto:hello@greenback.solutions"
                 className="text-base no-underline"
                 style={{
-                  color: "#d4e8c2",
-                  borderBottom: "1px solid rgba(212, 232, 194, 0.2)",
+                  color: "#f3f5f1",
+                  borderBottom: "1px solid rgba(163, 230, 53, 0.2)",
                   paddingBottom: "1px",
                 }}
               >
@@ -804,11 +795,11 @@ function ContactSection() {
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
-                style={{ color: "rgba(212, 232, 194, 0.35)" }}
+                style={{ color: "#8a948c" }}
               >
                 Base
               </span>
-              <span style={{ color: "rgba(212, 232, 194, 0.6)" }}>
+              <span style={{ color: "#f3f5f1" }}>
                 Bay of Plenty, Aotearoa New Zealand
               </span>
             </div>
@@ -816,7 +807,7 @@ function ContactSection() {
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
-                style={{ color: "rgba(212, 232, 194, 0.35)" }}
+                style={{ color: "#8a948c" }}
               >
                 Web
               </span>
@@ -826,8 +817,8 @@ function ContactSection() {
                 rel="noopener noreferrer"
                 className="text-base no-underline"
                 style={{
-                  color: "#d4e8c2",
-                  borderBottom: "1px solid rgba(212, 232, 194, 0.2)",
+                  color: "#f3f5f1",
+                  borderBottom: "1px solid rgba(163, 230, 53, 0.2)",
                   paddingBottom: "1px",
                 }}
               >
@@ -847,21 +838,21 @@ function StealthFooter() {
     <footer
       className="py-8 text-center"
       style={{
-        background: "#060906",
-        borderTop: "1px solid rgba(125, 180, 101, 0.06)",
+        background: "#0f1714",
+        borderTop: "1px solid #1f2a25",
       }}
     >
       <p
         className="font-dm-mono text-xs"
-        style={{ color: "rgba(212, 232, 194, 0.3)" }}
+        style={{ color: "#8a948c" }}
       >
-        © {new Date().getFullYear()} Greenback Ltd. All rights reserved.
+        &copy; {new Date().getFullYear()} Greenback Ltd. All rights reserved.
       </p>
       <p
         className="font-dm-mono text-[10px] mt-1"
-        style={{ color: "rgba(212, 232, 194, 0.15)" }}
+        style={{ color: "rgba(138, 148, 140, 0.5)" }}
       >
-        Bay of Plenty, NZ · NZBN registered
+        Bay of Plenty, NZ &middot; NZBN registered
       </p>
     </footer>
   );

@@ -1,178 +1,167 @@
 import { Layout } from "@/components/layout";
-import { Section } from "@/components/ui/section";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
+import { useRef, useState, useEffect, ReactNode } from "react";
 import { Mail, Calendar, Linkedin } from "lucide-react";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+
+function useInView(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return [ref, inView] as const;
+}
+
+function FadeIn({ children, delay = 0, className = "" }: { children: ReactNode; delay?: number; className?: string }) {
+  const [ref, inView] = useInView();
+  return (
+    <div ref={ref} className={className} style={{
+      opacity: inView ? 1 : 0, transform: inView ? "translateY(0)" : "translateY(24px)",
+      transition: `opacity 0.8s ease ${delay}s, transform 0.8s ease ${delay}s`,
+    }}>{children}</div>
+  );
+}
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message sent!",
-      description: "Thanks for reaching out. I'll get back to you soon.",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
-    setIsSubmitting(false);
-  };
-
   return (
     <Layout>
       {/* Hero */}
-      <Section className="bg-secondary/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Let's Talk
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            Ready to get your MVP off the ground? Book a free discovery call or send me a message.
-          </p>
+      <section className="py-24 md:py-32" style={{ background: "#0a0f0d" }}>
+        <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center">
+          <FadeIn>
+            <div
+              className="font-dm-mono text-xs tracking-widest uppercase mb-6"
+              style={{ color: "#a3e635", letterSpacing: "0.18em" }}
+            >
+              Contact
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <h1
+              className="text-4xl md:text-5xl font-semibold mb-6"
+              style={{ color: "#f3f5f1", letterSpacing: "-0.03em" }}
+            >
+              Let's Talk
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <p className="text-base md:text-lg max-w-[560px] mx-auto" style={{ color: "#8a948c" }}>
+              Ready to get your MVP off the ground? Book a free discovery call or send me a message.
+            </p>
+          </FadeIn>
         </div>
-      </Section>
+      </section>
 
       {/* Contact Options */}
-      <Section className="bg-background">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-24 md:py-32" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
+        <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-12">
-            {/* Contact Form */}
-            <Card className="border-border">
-              <CardHeader>
-                <CardTitle>Send a Message</CardTitle>
-                <CardDescription>
-                  Tell me about your project and I'll get back to you within 24 hours.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input 
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      placeholder="Your name"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input 
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="your@email.com"
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Tell me about your project</Label>
-                    <Textarea 
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      placeholder="What are you building? Where are you at? What support do you need?"
-                      rows={5}
-                      required
-                    />
-                  </div>
-                  <Button 
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-ochre hover:bg-ochre/90 text-ochre-foreground"
-                  >
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            {/* Discovery Call */}
+            <FadeIn>
+              <div
+                className="p-8 rounded-lg border"
+                style={{
+                  borderColor: "#1f2a25",
+                  background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)",
+                }}
+              >
+                <div
+                  className="w-12 h-12 rounded-lg flex items-center justify-center mb-6"
+                  style={{ background: "rgba(163, 230, 53, 0.1)", border: "1px solid rgba(163, 230, 53, 0.15)" }}
+                >
+                  <Calendar className="h-6 w-6" style={{ color: "#a3e635" }} />
+                </div>
 
-            {/* Other Contact Options */}
-            <div className="space-y-8">
-              {/* Discovery Call */}
-              <Card className="border-border bg-forest/5">
-                <CardHeader>
-                  <div className="p-3 bg-ochre/10 rounded-lg w-fit mb-2">
-                    <Calendar className="h-6 w-6 text-ochre" />
-                  </div>
-                  <CardTitle>Book a Discovery Call</CardTitle>
-                  <CardDescription>
-                    A free 30-minute call to discuss your project and how I can help.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    A free 30-minute call to discuss your project and how we can help.
-                  </p>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full border-forest text-forest hover:bg-forest hover:text-forest-foreground"
-                  >
-                    <a href="https://calendly.com/hello-greenback/30min" target="_blank" rel="noopener noreferrer">
-                      Book a 30-Minute Call
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
-
-              {/* Direct Contact */}
-              <Card className="border-border">
-                <CardHeader>
-                  <CardTitle>Direct Contact</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <a 
-                    href="mailto:hello@greenback.solutions"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-ochre transition-colors"
-                  >
-                    <Mail className="h-5 w-5" />
-                    <span>hello@greenback.solutions</span>
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/felicityroberts/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-muted-foreground hover:text-ochre transition-colors"
-                  >
-                    <Linkedin className="h-5 w-5" />
-                    <span>Connect on LinkedIn</span>
-                  </a>
-                </CardContent>
-              </Card>
-
-              {/* Location */}
-              <div className="p-6 bg-muted rounded-xl">
-                <p className="text-sm text-muted-foreground">
-                  <strong className="text-foreground">Based in:</strong> Bay of Plenty, Aotearoa New Zealand
+                <h3 className="text-xl font-semibold mb-3" style={{ color: "#f3f5f1" }}>
+                  Book a Discovery Call
+                </h3>
+                <p className="text-sm mb-6" style={{ color: "#8a948c" }}>
+                  A free 30-minute call to discuss your project and how we can help.
                 </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  <strong className="text-foreground">Working hours:</strong> Flexible across time zones. 
-                  I work with founders globally.
-                </p>
+
+                <a
+                  href="https://calendly.com/hello-greenback/30min"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full px-6 py-3 text-sm font-semibold rounded-full no-underline transition-all duration-300"
+                  style={{ background: "#a3e635", color: "#0a0f0d" }}
+                >
+                  Book a 30-Minute Call
+                </a>
               </div>
-            </div>
+            </FadeIn>
+
+            {/* Direct Contact */}
+            <FadeIn delay={0.15}>
+              <div className="space-y-6">
+                <div
+                  className="p-8 rounded-lg border"
+                  style={{ borderColor: "#1f2a25", background: "rgba(163, 230, 53, 0.02)" }}
+                >
+                  <h3 className="text-lg font-semibold mb-6" style={{ color: "#f3f5f1" }}>
+                    Direct Contact
+                  </h3>
+
+                  <div className="space-y-5">
+                    <a
+                      href="mailto:hello@greenback.solutions"
+                      className="flex items-center gap-3 no-underline transition-colors duration-300"
+                      style={{ color: "#8a948c" }}
+                    >
+                      <Mail className="h-5 w-5" style={{ color: "#a3e635" }} />
+                      <span className="text-sm">hello@greenback.solutions</span>
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/felicityroberts/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 no-underline transition-colors duration-300"
+                      style={{ color: "#8a948c" }}
+                    >
+                      <Linkedin className="h-5 w-5" style={{ color: "#a3e635" }} />
+                      <span className="text-sm">Connect on LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+
+                <div
+                  className="p-6 rounded-lg"
+                  style={{ background: "rgba(163, 230, 53, 0.03)", border: "1px solid #1f2a25" }}
+                >
+                  <div className="space-y-3">
+                    <div>
+                      <span
+                        className="font-dm-mono text-[10px] tracking-widest uppercase"
+                        style={{ color: "#a3e635", letterSpacing: "0.18em" }}
+                      >
+                        Based in
+                      </span>
+                      <p className="text-sm mt-1" style={{ color: "#f3f5f1" }}>
+                        Bay of Plenty, Aotearoa New Zealand
+                      </p>
+                    </div>
+                    <div>
+                      <span
+                        className="font-dm-mono text-[10px] tracking-widest uppercase"
+                        style={{ color: "#a3e635", letterSpacing: "0.18em" }}
+                      >
+                        Working hours
+                      </span>
+                      <p className="text-sm mt-1" style={{ color: "#8a948c" }}>
+                        Flexible across time zones. I work with founders globally.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
           </div>
         </div>
-      </Section>
+      </section>
     </Layout>
   );
 };
