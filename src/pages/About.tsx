@@ -53,7 +53,7 @@ const About = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-24 md:py-32" style={{ background: "#0a0f0d" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0a0f0d" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             {/* Photo */}
@@ -107,7 +107,7 @@ const About = () => {
       </section>
 
       {/* Bio */}
-      <section className="py-24 md:py-32" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
         <div className="max-w-[700px] mx-auto px-6 md:px-12">
           <div className="space-y-6">
             {[
@@ -172,7 +172,7 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-24 md:py-32" style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12">
           <FadeIn>
             <div
@@ -215,7 +215,7 @@ const About = () => {
 
       {/* CTA */}
       <section
-        className="py-24 md:py-32 text-center"
+        className="py-16 md:py-24 text-center"
         style={{
           background: "radial-gradient(ellipse at center, rgba(163, 230, 53, 0.08), transparent 60%), #0f1714",
           borderTop: "1px solid #1f2a25",

@@ -64,14 +64,14 @@ export const Navigation = () => {
             style={{ background: "rgba(163, 230, 53, 0.15)" }}
           />
           <Link
-            to="/the-ground-beneath-us"
+            to="/solutions"
             className="font-dm-mono text-xs tracking-wider no-underline transition-colors duration-300"
             style={{
-              color: location.pathname === "/the-ground-beneath-us" ? "#a3e635" : "#8a948c",
+              color: location.pathname === "/solutions" ? "#a3e635" : "#8a948c",
               letterSpacing: "0.08em",
             }}
           >
-            The Ground
+            Solutions
           </Link>
         </div>
 
@@ -111,15 +111,15 @@ export const Navigation = () => {
               </Link>
             ))}
             <Link
-              to="/the-ground-beneath-us"
+              to="/solutions"
               onClick={() => setIsOpen(false)}
               className="font-dm-mono text-sm no-underline transition-colors duration-300"
               style={{
-                color: location.pathname === "/the-ground-beneath-us" ? "#a3e635" : "#8a948c",
+                color: location.pathname === "/solutions" ? "#a3e635" : "#8a948c",
                 letterSpacing: "0.08em",
               }}
             >
-              The Ground
+              Solutions
             </Link>
           </div>
         </div>

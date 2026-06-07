@@ -266,7 +266,7 @@ function Thesis() {
   return (
     <section
       id="thesis"
-      className="py-24 md:py-32"
+      className="py-16 md:py-24"
       style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
@@ -376,7 +376,7 @@ function PlatformSection() {
   return (
     <section
       id="platform"
-      className="py-24 md:py-32"
+      className="py-16 md:py-24"
       style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
@@ -512,7 +512,7 @@ function Traction() {
   return (
     <section
       id="traction"
-      className="py-24 md:py-32"
+      className="py-16 md:py-24"
       style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
@@ -641,7 +641,7 @@ function TeamSection() {
   return (
     <section
       id="team"
-      className="py-24 md:py-32"
+      className="py-16 md:py-24"
       style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12">
@@ -737,7 +737,7 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32"
+      className="py-16 md:py-24"
       style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
       <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">

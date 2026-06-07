@@ -341,10 +341,60 @@ const TheGroundBeneathUs = () => {
         </p>
       </section>
 
-      {/* 08 — Action */}
-      <section className="stage cta" data-chapter="08 / Action">
+      {/* 08 — Get Involved */}
+      <section className="stage" data-chapter="08 / Get Involved" style={{ minHeight: "auto", paddingBottom: "6vh" }}>
+        <div className="eyebrow reveal">08 — Get Involved</div>
+        <h2 className="reveal delay-1" style={{ maxWidth: "22ch" }}>
+          We're looking for{" "}
+          <span style={{ color: "var(--green)" }}>farmers ready to prove it.</span>
+        </h2>
+        <p className="reveal delay-2" style={{ maxWidth: "52ch" }}>
+          Greenback is building the verification layer that connects what happens on-farm to the
+          payments farmers deserve. To do that, we need real data from real operations. We're
+          recruiting pilot partners for a 3-year field programme.
+        </p>
+
+        <div className="reveal delay-3" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px", marginTop: "48px", maxWidth: "820px" }}>
+          <div style={{ padding: "24px", border: "1px solid var(--line)", borderRadius: "8px", background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)" }}>
+            <div className="mono" style={{ fontSize: "13px", color: "var(--green)", marginBottom: "8px" }}>01</div>
+            <div style={{ fontWeight: 600, marginBottom: "6px" }}>Share your OMP data</div>
+            <div style={{ fontSize: "14px", color: "var(--ink-dim)" }}>
+              A lightweight data-sharing agreement gives us access to your Organic Management Plan
+              information. Easiest if you're already AsureQuality certified.
+            </div>
+          </div>
+          <div style={{ padding: "24px", border: "1px solid var(--line)", borderRadius: "8px", background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)" }}>
+            <div className="mono" style={{ fontSize: "13px", color: "var(--green)", marginBottom: "8px" }}>02</div>
+            <div style={{ fontWeight: 600, marginBottom: "6px" }}>Co-design the tests</div>
+            <div style={{ fontSize: "14px", color: "var(--ink-dim)" }}>
+              Together we decide which soil, water, and biodiversity indicators to measure on your
+              land — grounded in what matters to your operation.
+            </div>
+          </div>
+          <div style={{ padding: "24px", border: "1px solid var(--line)", borderRadius: "8px", background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)" }}>
+            <div className="mono" style={{ fontSize: "13px", color: "var(--green)", marginBottom: "8px" }}>03</div>
+            <div style={{ fontWeight: 600, marginBottom: "6px" }}>3-year partnership</div>
+            <div style={{ fontSize: "14px", color: "var(--ink-dim)" }}>
+              A three-year contract gives us the time-series data needed to quantify change — and
+              positions you first in line when ecosystem services payments go live.
+            </div>
+          </div>
+        </div>
+
+        <div className="reveal delay-3" style={{ marginTop: "48px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
+          <a className="btn" href="mailto:hello@greenback.solutions?subject=Pilot%20partnership%20enquiry">
+            Register your interest →
+          </a>
+          <span className="mono dim" style={{ fontSize: "12px" }}>
+            Or email hello@greenback.solutions directly
+          </span>
+        </div>
+      </section>
+
+      {/* 09 — Explore Greenback */}
+      <section className="stage cta" data-chapter="09 / Greenback">
         <div>
-          <div className="eyebrow reveal">08 — What now</div>
+          <div className="eyebrow reveal">09 — The Company</div>
           <h2
             className="reveal delay-1"
             style={{ fontSize: "clamp(40px,6.5vw,80px)", maxWidth: "18ch", margin: "16px auto 0" }}
@@ -354,10 +404,10 @@ const TheGroundBeneathUs = () => {
             It's <span style={{ color: "var(--green)" }}>already under our boots.</span>
           </h2>
           <p className="reveal delay-2" style={{ margin: "24px auto 0" }}>
-            Greenback is helping the transition pencil out — for farmers, for capital, for the
-            climate.
+            Greenback is building the verification infrastructure to make regenerative agriculture
+            pay — for farmers, for capital, for the climate.
           </p>
-          <a className="btn reveal delay-3" href="/">
+          <a className="btn reveal delay-3" href="/solutions">
             Explore Greenback Solutions →
           </a>
         </div>

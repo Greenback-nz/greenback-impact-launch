@@ -30,7 +30,7 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-24 md:py-32" style={{ background: "#0a0f0d" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0a0f0d" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center">
           <FadeIn>
             <div
@@ -57,7 +57,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Options */}
-      <section className="py-24 md:py-32" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
         <div className="max-w-[900px] mx-auto px-6 md:px-12">
           <div className="grid md:grid-cols-2 gap-12">
             {/* Discovery Call */}

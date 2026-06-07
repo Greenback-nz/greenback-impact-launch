@@ -6,7 +6,7 @@ const footerLinks = [
   { label: "Portfolio", path: "/portfolio" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
-  { label: "The Ground", path: "/the-ground-beneath-us" },
+  { label: "Solutions", path: "/solutions" },
 ];
 
 export const Footer = () => {

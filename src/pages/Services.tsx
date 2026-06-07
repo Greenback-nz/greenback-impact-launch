@@ -81,7 +81,7 @@ const Services = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="py-24 md:py-32" style={{ background: "#0a0f0d" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0a0f0d" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12 text-center">
           <FadeIn>
             <div
@@ -108,7 +108,7 @@ const Services = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 md:py-32" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0f1714", borderTop: "1px solid #1f2a25" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12 space-y-6">
           {services.map((service, index) => (
             <FadeIn key={index} delay={index * 0.1}>
@@ -159,7 +159,7 @@ const Services = () => {
       </section>
 
       {/* How I Work */}
-      <section className="py-24 md:py-32" style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}>
+      <section className="py-16 md:py-24" style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}>
         <div className="max-w-[1000px] mx-auto px-6 md:px-12">
           <FadeIn>
             <div
@@ -202,7 +202,7 @@ const Services = () => {
 
       {/* CTA */}
       <section
-        className="py-24 md:py-32 text-center"
+        className="py-16 md:py-24 text-center"
         style={{
           background: "radial-gradient(ellipse at center, rgba(163, 230, 53, 0.08), transparent 60%), #0f1714",
           borderTop: "1px solid #1f2a25",

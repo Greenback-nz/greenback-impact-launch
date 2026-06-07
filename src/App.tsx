@@ -23,11 +23,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div style={{ minHeight: "100vh", background: "#0a0f0d" }} />}>
+                <TheGroundBeneathUs />
+              </Suspense>
+            }
+          />
+          <Route path="/solutions" element={<Index />} />
           <Route path="/services" element={<Services />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          {/* Keep old URL as redirect */}
           <Route
             path="/the-ground-beneath-us"
             element={
