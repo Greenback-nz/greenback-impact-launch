@@ -217,17 +217,17 @@ function Hero() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#contact"
+            href="#traction"
             className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full no-underline transition-all duration-300"
             style={{
               background: "#a3e635",
               color: "#0a0f0d",
             }}
           >
-            Get in Touch
+            See what we've built &darr;
           </a>
           <a
-            href="#thesis"
+            href="#contact"
             className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-medium rounded-full no-underline transition-all duration-300 border"
             style={{
               color: "#f3f5f1",
@@ -235,7 +235,7 @@ function Hero() {
               background: "transparent",
             }}
           >
-            Learn more &darr;
+            Get in touch
           </a>
         </div>
       </div>
@@ -567,7 +567,7 @@ function Traction() {
               className="text-2xl md:text-3xl font-semibold mb-4"
               style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
             >
-              ANZ Organic Compliance Database
+              ANZ Organic Collective (ANZOC)
             </h3>
 
             <p
@@ -734,13 +734,34 @@ function TeamSection() {
 
 // === CONTACT ===
 function ContactSection() {
+  const audiences = [
+    {
+      label: "Investor",
+      desc: "Request the investor one-pager with our thesis, traction, and capital strategy.",
+      cta: "Request the investor one-pager →",
+      subject: "Investor enquiry",
+    },
+    {
+      label: "Research partner",
+      desc: "We're looking for research collaborators in soil science, remote sensing, and agricultural economics.",
+      cta: "Explore a partnership →",
+      subject: "Research partnership enquiry",
+    },
+    {
+      label: "Funder / grant body",
+      desc: "We're grant-ready and open to co-funded programmes aligned with regenerative agriculture outcomes.",
+      cta: "Grant and funding enquiries →",
+      subject: "Funding enquiry",
+    },
+  ];
+
   return (
     <section
       id="contact"
       className="py-16 md:py-24"
       style={{ background: "#0a0f0d", borderTop: "1px solid #1f2a25" }}
     >
-      <div className="max-w-[700px] mx-auto px-6 md:px-12 text-center">
+      <div className="max-w-[900px] mx-auto px-6 md:px-12">
         <FadeIn>
           <div
             className="font-dm-mono text-xs tracking-widest uppercase mb-6"
@@ -755,33 +776,72 @@ function ContactSection() {
             className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6"
             style={{ color: "#f3f5f1", letterSpacing: "-0.025em" }}
           >
-            Let's talk
+            Talk to us
           </h2>
         </FadeIn>
 
         <FadeIn delay={0.15}>
           <p
-            className="text-base leading-relaxed mb-12 max-w-[520px] mx-auto"
+            className="text-base leading-relaxed mb-12 max-w-[560px]"
             style={{ color: "#8a948c" }}
           >
-            We're open to conversations with investors, research partners, grant
-            bodies, and organisations aligned with our mission to make
-            regenerative agriculture economically viable.
+            We're talking to investors, research partners and grant bodies who want
+            regenerative agriculture to be economically viable. Tell us which you
+            are and we'll send the relevant brief.
           </p>
         </FadeIn>
 
-        <FadeIn delay={0.2}>
-          <div className="flex flex-col gap-6 items-center text-left max-w-[360px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+          {audiences.map((a, i) => (
+            <FadeIn key={i} delay={0.2 + i * 0.08}>
+              <div
+                className="p-6 rounded-lg border flex flex-col h-full"
+                style={{
+                  borderColor: "#1f2a25",
+                  background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)",
+                }}
+              >
+                <div
+                  className="font-dm-mono text-xs tracking-wider mb-3"
+                  style={{ color: "#a3e635" }}
+                >
+                  {a.label}
+                </div>
+                <p
+                  className="text-sm leading-relaxed mb-6 flex-1"
+                  style={{ color: "#8a948c" }}
+                >
+                  {a.desc}
+                </p>
+                <a
+                  href={`mailto:hello@greenback.solutions?subject=${encodeURIComponent(a.subject)}`}
+                  className="text-sm font-semibold no-underline transition-colors duration-200"
+                  style={{
+                    color: "#a3e635",
+                    borderBottom: "1px solid rgba(163, 230, 53, 0.3)",
+                    paddingBottom: "2px",
+                    alignSelf: "flex-start",
+                  }}
+                >
+                  {a.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+
+        <FadeIn delay={0.5}>
+          <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center" style={{ color: "#8a948c" }}>
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
                 style={{ color: "#8a948c" }}
               >
-                Email
+                General
               </span>
               <a
                 href="mailto:hello@greenback.solutions"
-                className="text-base no-underline"
+                className="text-sm no-underline"
                 style={{
                   color: "#f3f5f1",
                   borderBottom: "1px solid rgba(163, 230, 53, 0.2)",
@@ -791,7 +851,6 @@ function ContactSection() {
                 hello@greenback.solutions
               </a>
             </div>
-
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
@@ -799,23 +858,22 @@ function ContactSection() {
               >
                 Base
               </span>
-              <span style={{ color: "#f3f5f1" }}>
+              <span className="text-sm" style={{ color: "#f3f5f1" }}>
                 Bay of Plenty, Aotearoa New Zealand
               </span>
             </div>
-
             <div className="flex flex-col gap-1">
               <span
                 className="font-dm-mono text-[10px] tracking-widest uppercase"
                 style={{ color: "#8a948c" }}
               >
-                Web
+                Product
               </span>
               <a
                 href="https://anzoc.co.nz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-base no-underline"
+                className="text-sm no-underline"
                 style={{
                   color: "#f3f5f1",
                   borderBottom: "1px solid rgba(163, 230, 53, 0.2)",

@@ -107,11 +107,12 @@ function ContactForm() {
         className="btn"
         style={{ border: "none", cursor: "pointer", fontSize: "14px", width: "100%" }}
       >
-        {sent ? "Opening your email client…" : "Register your interest →"}
+        {sent ? "Opening your email client…" : "Book a 20-minute call →"}
       </button>
 
-      <div className="mono dim" style={{ fontSize: "12px", marginTop: "12px" }}>
-        Or email hello@greenback.solutions directly
+      <div style={{ fontSize: "13px", color: "var(--ink-dim)", marginTop: "12px", lineHeight: 1.5 }}>
+        No commitment. We'll walk you through the programme and send the
+        one-page pilot brief. It takes 20 minutes.
       </div>
     </form>
   );
@@ -231,6 +232,13 @@ const TheGroundBeneathUs = () => {
         <a className="brand" href="/">
           greenback<span>.</span>solutions
         </a>
+        <div className="topbar-nav">
+          <a href="#s04">What we build</a>
+          <a href="/solutions#traction">Traction</a>
+          <a href="#s08">For farmers</a>
+          <a href="/solutions#contact">For investors</a>
+          <a href="#s08">Contact</a>
+        </div>
         <div className="chapter-tag">{chapter}</div>
       </div>
 
@@ -263,9 +271,13 @@ const TheGroundBeneathUs = () => {
             Roughly a third of the planet's land is already farmland. What happens if we farm
             it differently? Scroll to find out.
           </p>
+          <p className="reveal delay-3 mono dim" style={{ marginTop: "32px", fontSize: "13px", maxWidth: "52ch" }}>
+            Greenback builds the verification infrastructure that pays farmers for regenerative
+            practice.
+          </p>
           <div
             className="reveal delay-3 mono dim"
-            style={{ marginTop: "80px", fontSize: "12px" }}
+            style={{ marginTop: "48px", fontSize: "12px" }}
           >
             ↓ scroll
           </div>
@@ -277,7 +289,7 @@ const TheGroundBeneathUs = () => {
         <div className="split">
           <div>
             <div className="eyebrow reveal">02 — Scale</div>
-            <h2 className="reveal delay-1">Half the habitable land is already farmland.</h2>
+            <h2 className="reveal delay-1">Over a third of habitable land is already farmland.</h2>
             <p className="reveal delay-2">
               Roughly <strong style={{ color: "var(--green)" }}>38%</strong> of Earth's
               habitable land — about <strong>4.8 billion hectares</strong> — is cropland or
@@ -334,7 +346,7 @@ const TheGroundBeneathUs = () => {
       </section>
 
       {/* 04 — Opportunity */}
-      <section className="stage" data-chapter="04 / Opportunity">
+      <section id="s04" className="stage" data-chapter="04 / Opportunity">
         <div className="eyebrow reveal">04 — Opportunity</div>
         <h2 className="reveal delay-1" style={{ maxWidth: "22ch" }}>
           Now imagine a different ground.
@@ -345,7 +357,7 @@ const TheGroundBeneathUs = () => {
           sinks — without sacrificing yield.
         </p>
         <p className="reveal delay-3 mono dim" style={{ marginTop: "24px" }}>
-          The math, three ways:
+          The maths, three ways:
         </p>
       </section>
 
@@ -399,10 +411,10 @@ const TheGroundBeneathUs = () => {
           What <span style={{ color: "var(--green)" }}>1% more soil carbon</span> could do.
         </h2>
         <p className="reveal delay-2">
-          Every percentage gain in soil organic matter lets farmland hold roughly 20,000 more
-          gallons of water per acre. Across 4.8 billion hectares of agricultural land, that's
-          an extra <strong>~900 km³</strong> of underground water storage — nearly twice the
-          volume of Lake Erie — concentrated where climate risk hits hardest.
+          Every percentage-point gain in soil organic matter lets farmland hold roughly
+          187,000 more litres of water per hectare. Across 4.8 billion hectares of agricultural
+          land, that's an extra <strong>~900 km³</strong> of underground water storage — nearly
+          twice the volume of Lake Erie — concentrated where climate risk hits hardest.
         </p>
         <AdaptMap />
       </section>
@@ -455,7 +467,7 @@ const TheGroundBeneathUs = () => {
       </section>
 
       {/* 08 — Get Involved */}
-      <section className="stage" data-chapter="08 / Get Involved" style={{ minHeight: "auto", paddingBottom: "6vh" }}>
+      <section id="s08" className="stage" data-chapter="08 / Get Involved" style={{ minHeight: "auto", paddingBottom: "6vh" }}>
         <div className="eyebrow reveal">08 — Get Involved</div>
         <h2 className="reveal delay-1" style={{ maxWidth: "22ch" }}>
           We're looking for{" "}
@@ -472,8 +484,8 @@ const TheGroundBeneathUs = () => {
             <div className="mono" style={{ fontSize: "13px", color: "var(--green)", marginBottom: "8px" }}>01</div>
             <div style={{ fontWeight: 600, marginBottom: "6px" }}>Share your OMP data</div>
             <div style={{ fontSize: "14px", color: "var(--ink-dim)" }}>
-              A lightweight data-sharing agreement gives us access to your Organic Management Plan
-              information. Easiest if you're already AsureQuality certified.
+              You stay in control of your Organic Management Plan data; a simple sharing agreement
+              covers how we use it. Easiest if you're already AsureQuality certified.
             </div>
           </div>
           <div style={{ padding: "24px", border: "1px solid var(--line)", borderRadius: "8px", background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)" }}>

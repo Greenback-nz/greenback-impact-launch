@@ -41,8 +41,13 @@
 .tgbu .topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px 24px; background: linear-gradient(to bottom, rgba(10, 15, 13, 0.85), rgba(10, 15, 13, 0)); backdrop-filter: blur(8px); }
 .tgbu .brand { font-weight: 600; letter-spacing: -0.01em; font-size: 14px; text-decoration: none; color: var(--ink); }
 .tgbu .brand span { color: var(--green); }
+.tgbu .topbar-nav { display: flex; align-items: center; gap: 24px; }
+.tgbu .topbar-nav a { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-dim); letter-spacing: 0.08em; text-decoration: none; transition: color 0.2s ease; }
+.tgbu .topbar-nav a:hover { color: var(--green); }
+@media (max-width: 768px) { .tgbu .topbar-nav { display: none; } }
 .tgbu .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0%; background: var(--green); z-index: 60; transition: width 0.1s linear; }
 .tgbu .chapter-tag { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+@media (max-width: 768px) { .tgbu .chapter-tag { display: none; } }
 
 .tgbu .hero { min-height: 100vh; display: grid; place-items: center; text-align: left; padding: 12vh 6vw; }
 @media (max-width: 768px) { .tgbu .hero { min-height: 85vh; padding: 20vw 5vw 12vw; } }
