@@ -134,6 +134,9 @@
 .tgbu .cta .btn { margin-top: 32px; }
 .tgbu .btn:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(163, 230, 53, 0.3); }
 .tgbu .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.tgbu select:focus, .tgbu textarea:focus { border-color: var(--green); box-shadow: 0 0 0 2px rgba(163, 230, 53, 0.15); }
+.tgbu textarea::placeholder { color: var(--ink-dim); opacity: 0.6; }
+
 .tgbu footer { padding: 40px 6vw; color: var(--ink-dim); font-size: 12px; }
 .tgbu footer a { color: var(--ink-dim); }
 

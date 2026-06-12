@@ -4,6 +4,119 @@ import { AdaptMap } from "@/components/scrolly/AdaptMap";
 import { prefersReducedMotion } from "@/components/scrolly/geo";
 import "@/components/scrolly/scrolly.css";
 
+const ROLES = [
+  { value: "", label: "I am a…" },
+  { value: "farmer", label: "Farmer keen to pilot" },
+  { value: "investor", label: "Investor" },
+  { value: "funder", label: "Funder / grant body" },
+  { value: "partner", label: "Potential partner" },
+  { value: "sector-body", label: "Organic sector body" },
+  { value: "other", label: "Other" },
+];
+
+function ContactForm() {
+  const [role, setRole] = useState("");
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const roleLabel = ROLES.find((r) => r.value === role)?.label ?? role;
+    const subject = encodeURIComponent(`Interest from: ${roleLabel}`);
+    const body = encodeURIComponent(`Role: ${roleLabel}\n\n${message}`);
+    window.location.href = `mailto:hello@greenback.solutions?subject=${subject}&body=${body}`;
+    setSent(true);
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "12px 16px",
+    borderRadius: "8px",
+    border: "1px solid var(--line)",
+    background: "var(--bg-2)",
+    color: "var(--ink)",
+    fontFamily: "'Space Grotesk', system-ui, sans-serif",
+    fontSize: "14px",
+    outline: "none",
+    appearance: "none",
+    WebkitAppearance: "none",
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="reveal delay-3"
+      style={{ marginTop: "48px", maxWidth: "480px" }}
+    >
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          className="mono"
+          htmlFor="tgbu-role"
+          style={{ display: "block", fontSize: "11px", color: "var(--green)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "8px" }}
+        >
+          I am a…
+        </label>
+        <div style={{ position: "relative" }}>
+          <select
+            id="tgbu-role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+            style={{
+              ...inputStyle,
+              cursor: "pointer",
+              paddingRight: "40px",
+            }}
+          >
+            {ROLES.map((r) => (
+              <option key={r.value} value={r.value} disabled={r.value === ""} style={{ background: "#0f1714", color: "#f3f5f1" }}>
+                {r.label}
+              </option>
+            ))}
+          </select>
+          <div style={{ position: "absolute", right: "14px", top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "var(--ink-dim)", fontSize: "12px" }}>
+            ▾
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginBottom: "16px" }}>
+        <label
+          className="mono"
+          htmlFor="tgbu-message"
+          style={{ display: "block", fontSize: "11px", color: "var(--green)", letterSpacing: "0.18em", textTransform: "uppercase", marginBottom: "8px" }}
+        >
+          Short message
+        </label>
+        <textarea
+          id="tgbu-message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          rows={3}
+          placeholder="Tell us a bit about you and what you're interested in…"
+          style={{
+            ...inputStyle,
+            resize: "vertical",
+            minHeight: "80px",
+          }}
+        />
+      </div>
+
+      <button
+        type="submit"
+        className="btn"
+        style={{ border: "none", cursor: "pointer", fontSize: "14px", width: "100%" }}
+      >
+        {sent ? "Opening your email client…" : "Register your interest →"}
+      </button>
+
+      <div className="mono dim" style={{ fontSize: "12px", marginTop: "12px" }}>
+        Or email hello@greenback.solutions directly
+      </div>
+    </form>
+  );
+}
+
 const TheGroundBeneathUs = () => {
   const rootRef = useRef<HTMLDivElement>(null);
   const carbonNumRef = useRef<HTMLSpanElement>(null);
@@ -346,12 +459,12 @@ const TheGroundBeneathUs = () => {
         <div className="eyebrow reveal">08 — Get Involved</div>
         <h2 className="reveal delay-1" style={{ maxWidth: "22ch" }}>
           We're looking for{" "}
-          <span style={{ color: "var(--green)" }}>farmers ready to prove it.</span>
+          <span style={{ color: "var(--green)" }}>people ready to prove it.</span>
         </h2>
         <p className="reveal delay-2" style={{ maxWidth: "52ch" }}>
           Greenback is building the verification layer that connects what happens on-farm to the
-          payments farmers deserve. To do that, we need real data from real operations. We're
-          recruiting pilot partners for a 3-year field programme.
+          payments farmers deserve. Whether you farm, fund, certify, or partner — we want to
+          hear from you.
         </p>
 
         <div className="reveal delay-3" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "16px", marginTop: "48px", maxWidth: "820px" }}>
@@ -381,14 +494,8 @@ const TheGroundBeneathUs = () => {
           </div>
         </div>
 
-        <div className="reveal delay-3" style={{ marginTop: "48px", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "12px" }}>
-          <a className="btn" href="mailto:hello@greenback.solutions?subject=Pilot%20partnership%20enquiry">
-            Register your interest →
-          </a>
-          <span className="mono dim" style={{ fontSize: "12px" }}>
-            Or email hello@greenback.solutions directly
-          </span>
-        </div>
+        {/* Contact form */}
+        <ContactForm />
       </section>
 
       {/* 09 — Explore Greenback */}
