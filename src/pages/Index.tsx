@@ -505,7 +505,7 @@ function Traction() {
   const metrics = [
     { value: "850+", label: "Producers supported through certification" },
     { value: "18", label: "Sectors across organic certification" },
-    { value: "1,000+", label: "NZ food businesses surveyed" },
+    { value: "1,000+", label: "Food businesses surveyed" },
     { value: "6", label: "Global certification databases integrated" },
   ];
 
@@ -636,6 +636,11 @@ function TeamSection() {
       role: "Founder",
       bio: "3 years running organic certification operations at BioGro NZ. Supported organic certification for over 850+ producers. 10 years operations management across healthcare and entrepreneurship. Full-stack developer.",
     },
+    {
+      name: "Dr Rhianon Jones",
+      role: "Co-Founder & Advisor",
+      bio: "Establishing Greenback's UK presence from London. Tech Team Lead at GrantTree, helping companies navigate R&D tax credits and HMRC compliance. PhD background with academic research and teaching at Lancaster University. Brings deep expertise in technical due diligence, regulatory navigation, and cross-border operations.",
+    },
   ];
 
   return (
@@ -678,7 +683,7 @@ function TeamSection() {
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 max-w-[500px] gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-[1000px] gap-6">
           {team.map((person, i) => (
             <FadeIn key={i} delay={0.2 + i * 0.1}>
               <div
@@ -859,7 +864,7 @@ function ContactSection() {
                 Base
               </span>
               <span className="text-sm" style={{ color: "#f3f5f1" }}>
-                Bay of Plenty, Aotearoa New Zealand
+                Auckland, New Zealand & London, UK
               </span>
             </div>
             <div className="flex flex-col gap-1">
@@ -910,7 +915,7 @@ function StealthFooter() {
         className="font-dm-mono text-[10px] mt-1"
         style={{ color: "rgba(138, 148, 140, 0.5)" }}
       >
-        Bay of Plenty, NZ &middot; NZBN registered
+        Auckland, NZ &middot; London, UK &middot; NZBN registered
       </p>
     </footer>
   );

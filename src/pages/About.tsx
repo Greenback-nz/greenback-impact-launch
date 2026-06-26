@@ -98,7 +98,7 @@ const About = () => {
               </FadeIn>
               <FadeIn delay={0.3}>
                 <p className="text-lg leading-relaxed" style={{ color: "#8a948c" }}>
-                  Operations specialist turned technical founder, based in the Bay of Plenty, New Zealand.
+                  Operations specialist turned technical founder, based in Auckland, New Zealand.
                 </p>
               </FadeIn>
             </div>

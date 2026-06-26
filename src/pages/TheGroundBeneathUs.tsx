@@ -485,7 +485,7 @@ const TheGroundBeneathUs = () => {
             <div style={{ fontWeight: 600, marginBottom: "6px" }}>Share your OMP data</div>
             <div style={{ fontSize: "14px", color: "var(--ink-dim)" }}>
               You stay in control of your Organic Management Plan data; a simple sharing agreement
-              covers how we use it. Easiest if you're already AsureQuality certified.
+              covers how we use it.
             </div>
           </div>
           <div style={{ padding: "24px", border: "1px solid var(--line)", borderRadius: "8px", background: "linear-gradient(180deg, rgba(163, 230, 53, 0.06), transparent)" }}>
