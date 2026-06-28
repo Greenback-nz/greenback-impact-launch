@@ -300,7 +300,9 @@ function CoverSection() {
         </div>
 
         <a
-          href="#s10-contact"
+          href="https://calendly.com/hello-greenback/20-minute-meeting"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full no-underline transition-all duration-300"
           style={{ background: "#a3e635", color: "#0a0f0d" }}
         >
@@ -1131,7 +1133,10 @@ function ProductSection() {
                 Carbon + biodiversity + water + soil in one verified unit.
                 Aligned with Verra VM0042, SD VISta and EU CRCF. Purpose-built
                 registry, immutable audit trail. Phase 1: Phoenix Foundation
-                (Fiji), Ceres Organics anchor offtake.
+                (Fiji), Ceres Organics anchor offtake. Seeking year-round,
+                both-hemisphere field trials for regenerative crops around buyer
+                requirements via UK, Ireland, potentially France/Belgium,
+                Australia and New Zealand.
               </p>
             </div>
           </FadeIn>
@@ -1470,12 +1475,11 @@ function TeamAndAskSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const roleLabel = ROLES.find((r) => r.value === role)?.label ?? role;
-    const subject = encodeURIComponent(
-      `Pitch deck enquiry from: ${roleLabel}`
+    window.open(
+      "https://calendly.com/hello-greenback/20-minute-meeting",
+      "_blank",
+      "noopener,noreferrer"
     );
-    const body = encodeURIComponent(`Role: ${roleLabel}\n\n${message}`);
-    window.location.href = `mailto:hello@greenback.solutions?subject=${subject}&body=${body}`;
     setSent(true);
   };
 
@@ -1791,7 +1795,7 @@ function TeamAndAskSection() {
                 }}
               >
                 {sent
-                  ? "Opening your email client..."
+                  ? "Opening Calendly..."
                   : "Book a 20-minute call \u2192"}
               </button>
             </form>
