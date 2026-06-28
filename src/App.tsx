@@ -10,6 +10,7 @@ import Portfolio from "./pages/Portfolio";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import PitchDeck from "./pages/PitchDeck";
 
 // Heavy (d3 + world-atlas) — kept out of the main bundle.
 const TheGroundBeneathUs = lazy(() => import("./pages/TheGroundBeneathUs"));
@@ -36,6 +37,7 @@ const App = () => (
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/pitch-deck" element={<PitchDeck />} />
           {/* Keep old URL as redirect */}
           <Route
             path="/the-ground-beneath-us"
