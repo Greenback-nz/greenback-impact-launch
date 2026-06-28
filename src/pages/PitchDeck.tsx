@@ -300,13 +300,13 @@ function CoverSection() {
         </div>
 
         <a
-          href="https://calendly.com/hello-greenback/20-minute-meeting"
+          href="https://calendly.com/hello-greenback/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold rounded-full no-underline transition-all duration-300"
           style={{ background: "#a3e635", color: "#0a0f0d" }}
         >
-          Book a 20-minute call
+          Book a 30-minute call
         </a>
       </div>
     </section>
@@ -1476,7 +1476,7 @@ function TeamAndAskSection() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     window.open(
-      "https://calendly.com/hello-greenback/20-minute-meeting",
+      "https://calendly.com/hello-greenback/30min",
       "_blank",
       "noopener,noreferrer"
     );
@@ -1694,7 +1694,7 @@ function TeamAndAskSection() {
               className="text-2xl font-semibold mb-6"
               style={{ color: "#f3f5f1" }}
             >
-              Book a 20-minute call
+              Book a 30-minute call
             </h3>
 
             <form
@@ -1796,7 +1796,7 @@ function TeamAndAskSection() {
               >
                 {sent
                   ? "Opening Calendly..."
-                  : "Book a 20-minute call \u2192"}
+                  : "Book a 30-minute call \u2192"}
               </button>
             </form>
 
