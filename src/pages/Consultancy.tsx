@@ -27,7 +27,7 @@ function FadeIn({ children, delay = 0, className = "" }: { children: ReactNode; 
 }
 
 const CALENDLY = "https://calendly.com/hello-greenback/30min";
-const EMAIL = "hello.greenback@gmail.com";
+const EMAIL = "hello@greenback.solutions";
 
 const whoItems = [
   "Founders and small teams drowning in work that a good system would absorb",
