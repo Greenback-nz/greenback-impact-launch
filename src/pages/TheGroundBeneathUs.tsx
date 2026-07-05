@@ -21,10 +21,11 @@ function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const roleLabel = ROLES.find((r) => r.value === role)?.label ?? role;
-    const subject = encodeURIComponent(`Interest from: ${roleLabel}`);
-    const body = encodeURIComponent(`Role: ${roleLabel}\n\n${message}`);
-    window.location.href = `mailto:hello@greenback.solutions?subject=${subject}&body=${body}`;
+    window.open(
+      "https://calendly.com/hello-greenback/30min",
+      "_blank",
+      "noopener,noreferrer"
+    );
     setSent(true);
   };
 
@@ -107,12 +108,12 @@ function ContactForm() {
         className="btn"
         style={{ border: "none", cursor: "pointer", fontSize: "14px", width: "100%" }}
       >
-        {sent ? "Opening your email client…" : "Book a 20-minute call →"}
+        {sent ? "Opening Calendly…" : "Book a 30-minute call →"}
       </button>
 
       <div style={{ fontSize: "13px", color: "var(--ink-dim)", marginTop: "12px", lineHeight: 1.5 }}>
         No commitment. We'll walk you through the programme and send the
-        one-page pilot brief. It takes 20 minutes.
+        one-page pilot brief. It takes 30 minutes.
       </div>
     </form>
   );
