@@ -111,7 +111,7 @@ const packages = [
 const proofBullets = [
   "A multi-market organic status API letting anyone in the organic assurance space check certification across markets from one place. As far as I can find, the first of its kind.",
   "A free, open-source web analytics tool, customisable across multiple sites, running live on my own portfolio.",
-  "A portfolio of working apps, from employment-rights guidance (workrights.nz) to consumer complaint automation (mykaren.co) to diet-diversity tracking (30plants), each built and shipped solo.",
+  "A portfolio of working apps built and shipped solo, from employment-rights guidance (workrights.nz) to diet-diversity tracking (30plantschallenge.com), with more in the pipeline.",
 ];
 
 const Consultancy = () => {
@@ -253,7 +253,7 @@ const Consultancy = () => {
                 <h3 className="text-lg font-semibold" style={{ color: "#a3e635" }}>ANZOC</h3>
               </div>
               <p className="text-sm md:text-base" style={{ color: "#f3f5f1", lineHeight: 1.7 }}>
-                An organic assurance directory I built and run solo. A deliberate growth strategy went in mid-May 2026, and in under two months it took the site from roughly 100 to 727 monthly visitors across 43 countries, and lifted buyer views of producer profiles from a handful to 565 a month. A growth engine built and proven in seven weeks, with the numbers pulled live from analytics, not estimated.
+                An organic assurance directory I built and run solo. A deliberate growth strategy went in mid-May 2026, and in under two months it grew monthly site visits by <strong>over 500%</strong> and buyer views of producer profiles by <strong>over 1,900%</strong>, across 43 countries. A growth engine built and proven in seven weeks, with the numbers pulled live from analytics, not estimated.
               </p>
             </div>
           </FadeIn>
