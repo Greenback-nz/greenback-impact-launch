@@ -8,7 +8,6 @@ const navItems = [
   { label: "Portfolio", path: "/portfolio" },
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
-  { label: "For investors", path: "/pitch-deck" },
 ];
 
 export const Navigation = () => {

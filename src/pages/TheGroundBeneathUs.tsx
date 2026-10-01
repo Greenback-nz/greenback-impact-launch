@@ -237,7 +237,6 @@ const TheGroundBeneathUs = () => {
           <a href="#s04">What we build</a>
           <a href="/solutions#traction">Traction</a>
           <a href="#s08">For farmers</a>
-          <a href="/pitch-deck">For investors</a>
           <a href="#s08">Contact</a>
         </div>
         <div className="chapter-tag">{chapter}</div>

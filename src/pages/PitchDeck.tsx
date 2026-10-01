@@ -455,7 +455,7 @@ function SolutionSection() {
     {
       name: "Independent VVBs",
       detail:
-        "AsureQuality and accredited bodies validate outcomes.",
+        "Accredited independent bodies validate outcomes.",
     },
     {
       name: "Corporate buyers",
@@ -1220,11 +1220,6 @@ function TractionSection() {
               >
                 <li className="flex gap-3">
                   <span style={{ color: "#a3e635" }}>&bull;</span>
-                  AsureQuality confirmed as verification and co-development
-                  partner.
-                </li>
-                <li className="flex gap-3">
-                  <span style={{ color: "#a3e635" }}>&bull;</span>
                   Tiffany Tompkins (former OANZ Chief Executive) strategic
                   advisor.
                 </li>
@@ -1389,11 +1384,6 @@ function MoatSection() {
       label: "ACCESS",
       detail:
         "Peak organic-body federation as the project-developer network (OANZ, AOL, IFOAM, UK Soil Association, IOA), a decades-deep distribution moat.",
-    },
-    {
-      label: "PARTNERSHIP",
-      detail:
-        "AsureQuality, NZ's national assurance provider, as verification and co-development partner.",
     },
     {
       label: "IP",
@@ -1623,35 +1613,6 @@ function TeamAndAskSection() {
                 style={{ color: "#8a948c" }}
               >
                 Former CEO, Organics Aotearoa NZ.
-              </p>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.4}>
-            <div
-              className="p-6 rounded-lg border"
-              style={{
-                borderColor: "#1f2a25",
-                background: "rgba(163, 230, 53, 0.02)",
-              }}
-            >
-              <div
-                className="font-dm-mono text-[10px] tracking-widest uppercase mb-2"
-                style={{ color: "#8a948c" }}
-              >
-                Verification Partner
-              </div>
-              <h4
-                className="text-base font-semibold mb-1"
-                style={{ color: "#f3f5f1" }}
-              >
-                AsureQuality
-              </h4>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#8a948c" }}
-              >
-                Simon Love, Head of Sustainability Assurance.
               </p>
             </div>
           </FadeIn>

@@ -7,7 +7,6 @@ const footerLinks = [
   { label: "About", path: "/about" },
   { label: "Contact", path: "/contact" },
   { label: "Solutions", path: "/solutions" },
-  { label: "For investors", path: "/pitch-deck" },
 ];
 
 export const Footer = () => {
